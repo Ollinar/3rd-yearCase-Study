@@ -66,3 +66,43 @@ body {
   background: white;
   border-radius: 0px 0px 10px 10px;
 }
+
+.img{
+  max-width: 80%;
+
+  min-width: 80%;
+}
+
+.target{
+  width: 100%;
+}
+
+aside{
+  border-right:2px solid #cecece;
+}
+.main{
+  margin-left: 28%;
+}
+
+@media screen and (max-width: 800px) {
+ .main {
+   margin-right: 58%;
+   position: relative;
+   right: 100px;
+   width: 90%;
+  }
+}
+
+
+
+.gb-color {
+  background: hsla(233, 100%, 90%, 1);
+
+  background: linear-gradient(90deg, hsla(233, 100%, 90%, 1) 0%, hsla(0, 0%, 89%, 1) 100%);
+  
+  background: -moz-linear-gradient(90deg, hsla(233, 100%, 90%, 1) 0%, hsla(0, 0%, 89%, 1) 100%);
+  
+  background: -webkit-linear-gradient(90deg, hsla(233, 100%, 90%, 1) 0%, hsla(0, 0%, 89%, 1) 100%);
+  
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAD0FF", endColorstr="#E3E3E3", GradientType=1 );
+}

@@ -7,7 +7,6 @@ require_once('util.php');
 
 $dbconfig = $config['database'];
 
-
 try {
 
     $dao = new DAO($dbconfig, opts: [PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]);
