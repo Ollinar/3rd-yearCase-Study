@@ -2,13 +2,11 @@
 require_once( $_SERVER['DOCUMENT_ROOT']."/util.php");
 require_once( $_SERVER['DOCUMENT_ROOT']."/debugUtil.php");
 
-if (empty($_SESSION['errors'])) {
-    $_SESSION['errors'] = array();
-}
+
 if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     require 'views/login.html.php';
 }else{
-    
+    $_SESSION['errors'] = array();
     $username = $_POST['username'];
     $password = $_POST['password'];
     
@@ -26,7 +24,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         die();
     }
 
-    if (count($entry) == 0) {
+    if (!$entry) {
         redirect('/login',504);
     }
     if (empty($entry)) {

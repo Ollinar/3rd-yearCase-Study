@@ -12,7 +12,8 @@ $routes =[
     '/register' => 'controllers/register.controller.php',
     '/admin' => 'controllers/admin.controller.php',
     '/login/auth' => 'controllers/login.auth.php',
-    '/504' => 'controllers/504.controller.php'
+    '/504' => 'controllers/504.controller.php',
+    '/adminDashboard' => 'controllers/adminDashboard.controller.php'
 ];
 
 
