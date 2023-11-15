@@ -1,0 +1,9 @@
+
+<?php  if (count($_SESSION['errors']) > 0) : ?>
+  <div class="error">
+  	<?php foreach ($_SESSION['errors'] as $error) : ?>
+  	  <p><?php echo $error ?></p>
+  	<?php endforeach ?>
+  </div>
+  <?php $_SESSION['errors'] = array();?>
+<?php  endif ?>
