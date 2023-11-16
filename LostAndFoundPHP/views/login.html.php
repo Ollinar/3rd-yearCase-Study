@@ -58,12 +58,12 @@
     </div>
     <!-- Image Section -->
     <div class="w-1/2 shadow-2xl">
-      <img class="object-cover w-full h-screen hidden md:block" src="../img/loginbg.png" />
+      <img class="object-cover w-full h-screen hidden md:block" src="/assets/img/loginbg.png" />
     </div>
   </div>
 </body>
 <!-- For Particle -->
-<script src="../js/particle-animation.js"></script>
+<script src="/assets/js/particle-animation.js"></script>
 <!-- For Custom Alert Box (will do later)-->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

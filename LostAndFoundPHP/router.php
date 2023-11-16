@@ -16,8 +16,6 @@ $routes =[
     '/adminDashboard' => 'controllers/adminDashboard.controller.php'
 ];
 
-
-
     $route = $routes[$url];
     
     $route ? require $route : require $routes['/'];

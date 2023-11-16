@@ -1,12 +1,7 @@
 
-<?php  if (isset($_SESSION['errors']) > 0) : ?>
+<?php  if (isset($_SESSION['errors'])) : ?>
   <div class="error">
-    <?php
-      var_dump($_SESSION['errors']);
-    ?>
-  	<?php foreach ($_SESSION['errors'] as $error) : ?>
-  	  <p><?php echo $error ?></p>
-  	<?php endforeach ?>
+    <?=$_SESSION['errors'] ?>
   </div>
   <?php unset($_SESSION['errors']);?>
 <?php  endif ?>
