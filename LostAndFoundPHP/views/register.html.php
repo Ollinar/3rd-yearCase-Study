@@ -29,14 +29,14 @@
           class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32"
         >
           <p class="text-center text-3xl">Join Us.</p>
-          <form class="flex flex-col pt-3 md:pt-8" method="post" action="register.php">
+          <form class="flex flex-col pt-3 md:pt-8" method="post" action="/register">
           <?php include('views/fragments/errors.php'); ?> 
             <div class="flex flex-col pt-4">
               <label class="text-lg">Student ID</label>
               <input
                 type="text"
-                id="stud_id"
-                name="stud_id"
+                id="studID"
+                name="studID"
                 placeholder="SUM2021-01384"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                 value="<?php echo $stud_id; ?>"
@@ -55,12 +55,12 @@
             </div>
 
             <div class="flex flex-col pt-4">
-              <label class="text-lg">Password</label>
+              <label class="text-lg">E-mail</label>
               <input
                 type="text"
-                id="password_1"
-                name="password_1"
-                placeholder="Password"
+                id="email"
+                name="email"
+                placeholder="E-mail"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                 value="<?php echo $password_1; ?>"
               />
@@ -68,9 +68,20 @@
             <div class="flex flex-col pt-4">
               <label class="text-lg">Password</label>
               <input
-                type="text"
-                id="password_2"
-                name="password_2"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
+                value="<?php echo $password_1; ?>"
+              />
+            </div>
+            <div class="flex flex-col pt-4">
+              <label class="text-lg">Confirm Password</label>
+              <input
+                type="password"
+                id="passwordComf"
+                name="passwordConf"
                 placeholder="Confirm Password"
                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline"
                 value="<?php echo $password_2; ?>"
@@ -102,14 +113,14 @@
       <div class="w-1/2 shadow-2xl">
         <img
           class="object-cover w-full h-screen hidden md:block"
-          src="../img/registerbg.png"
+          src="assets/img/registerbg.png"
           alt="Background"
         />
       </div>
     </div>
   </body>
   <!-- For Particle -->
-  <script src="../js/particle-animation.js"></script>
+  <script src="assets/js/particle-animation.js"></script>
   <!-- For Custom Alert Box-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <?php  if (isset($_SESSION['status'])) : ?>
