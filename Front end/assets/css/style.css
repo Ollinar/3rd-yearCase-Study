@@ -108,3 +108,9 @@ textarea{
 .activeClass:focus{
   background-color: #b0c4de;
 }
+
+
+.imgcont{
+  overflow: scroll;
+  padding: 30px;
+}
