@@ -2,6 +2,10 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/util.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/debugUtil.php");
 
+if (isset($_SESSION['userID'])) {
+    redirect('/',302);
+    die();
+}
 
 if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     require 'views/login.html.php';

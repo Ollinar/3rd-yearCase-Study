@@ -2,6 +2,12 @@
 require_once($_SERVER['DOCUMENT_ROOT'] . "/util.php");
 require_once($_SERVER['DOCUMENT_ROOT'] . "/debugUtil.php");
 
+if (isset($_SESSION['userID'])) {
+    redirect('/',302);
+    die();
+}
+
+
 if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     $stud_id = "";
     $username = "";
@@ -45,11 +51,13 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     $hash = password_hash($password, PASSWORD_DEFAULT);
     $dao->queryDB('INSERT INTO tbl_user (col_StudNum,col_username,col_password,col_email) VALUES (?,?,?,?)', [$studIDNum,$username, $hash,$email]);
     $res = $dao->queryDB('SELECT col_userID AS userID FROM tbl_user WHERE col_username = ?',[$username])->fetch();
-    if(!$res){
-        $_SESSION['userID'] = $entry['userID'];
+
+    if(!empty($res)){
+        $_SESSION['userID'] = $res['userID'];
         $_SESSION['username'] = $username;
         $_SESSION['userEmail'] = $email;
         $_SESSION['userRole'] = 'user';
         redirect('/', 303);
+        die();
     }
 }
