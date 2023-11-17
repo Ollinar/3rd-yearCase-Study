@@ -11,3 +11,7 @@ function sanitizeData($data){
 function urlis($ulr){
     return parse_url($_SERVER['REQUEST_URI'])['path'] === $ulr;
 }
+
+function isadmin(){
+    return $_SESSION['userRole'] ==='admin';
+}

@@ -239,7 +239,7 @@
                                 <!-- buttons -->
                                 
                                 <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
-                                <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                                <input multiple="true" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
 
                                 <div class=" w-full"> 
                                     <div class="w-full p-2">
@@ -251,9 +251,9 @@
 
 
                                 <div class="buttons flex ml-auto py-2">
-                                    <button id="closeFormButton"
+                                    <button id="closeFormButton" type="button"
                                         class="text-gray-800 btn border-2 border-green-300 rounded-full p-1 px-4 font-semibold text-white ml-auto bg-white  p-1 ">Cancel</button>
-                                    <button
+                                    <button id="btnPost" type="button"
                                         class="btn border border-white  p-1 px-4 font-semibold text-white rounded-full ml-2 bg-purple-600 p-1 hover:bg-purple-600 hover:text-white ">Post</button>
                                 </div>
                             </div>
@@ -437,7 +437,20 @@
                                 <span class="underline text-blue-500">example@gmail.com</span>
                             </td>
                             <td class="px-4 py-3 text-sm">
-                               <image class="rounded" alt="img" width="50" height="40" src="./assets/img/create-account-office.jpeg"/>
+                                <button>
+                                <img onclick="showModal('./assets/img/create-account-office.jpeg')" class=" cursor-pointer" width="50" height="40" src="./assets/img/create-account-office.jpeg"/>
+                                </button>
+
+                               <!--Hidden modal-->
+                               <div id="modal" class="hidden fixed top-0 left-0 z-90 w-screen h-screen bg-black/70 flex justify-center items-center">
+                                <!-- The close button -->
+                                <a class="fixed top-6 right-8 text-white text-5xl font-bold" href="javascript:void(0)"
+                                    onclick="closeModal()">&times;</a>
+
+                                <!-- A big image will be displayed here -->
+                                <img id="modal-img" class="max-w-[500px] max-h-[500px]" />
+                                </div>
+                            <!--Hidden modal-->
                             </td>
                             <td class="px-4 py-3 text-xs">
                                 <span

@@ -1,3 +1,4 @@
+// ----- Open Upload Form
 document.getElementById('openForm').addEventListener('click', function() {
   document.getElementById('popUpload').classList.remove('hidden');
 });
@@ -13,7 +14,7 @@ document.getElementById('closeFormButton').addEventListener('click', function() 
 //   document.getElementById('close').addEventListener('click', function() {
 //     document.getElementById('modal').classList.add('hidden');
 //   });
-
+// ------- Open edit modal
 document.addEventListener('click', function (event) {
   const target = event.target;
   if (target.classList.contains('open-button')) {
@@ -25,6 +26,21 @@ document.addEventListener('click', function (event) {
   }
 });
 
+// ------- Open Image Preview
+var modal = document.getElementById('modal');
+var modalImg = document.getElementById('modal-img');
+
+// this function is called when a small image is clicked
+function showModal(src) {
+  modal.classList.remove('hidden');
+  modalImg.src = src;
+}
+
+// this function is called when the close button is clicked
+function closeModal() {
+  modal.classList.add('hidden');
+}
+
 //   document.getElementById('text').addEventListener('input', function() {
 //     var text = this.value;
 //     var words = text.split(/\s+/).filter(function(word) {
@@ -34,6 +50,7 @@ document.addEventListener('click', function (event) {
 //     document.getElementById('counter').textContent = words.length ;
 // });
 
+//---- Counter of fields in Upload
 const inputFields = document.querySelectorAll('input[data-te-input-showcounter="true"]');
 const textarea = document.querySelectorAll('textarea[data-te-input-showcounter="true"]');
 
@@ -54,23 +71,13 @@ const textarea = document.querySelectorAll('textarea[data-te-input-showcounter="
     });
   });
 
+// check the limit of file upload
 
-document.getElementById('fileInput').addEventListener('change', function() {
-  var fileList = document.getElementById('fileList');
-  fileList.innerHTML = ''; // Clear the list
-  for (var i = 0; i < this.files.length; i++) {
-      var fileItem = document.createElement('div');
-      fileItem.textContent = this.files[i].name;
-      fileItem.className = 'fileItem';
-      fileList.appendChild(fileItem);
+document.getElementById("btnPost").addEventListener('click',function(){
+  if(document.getElementById('file_input').files.length > 5){
+    alert("5 files only .|.")
+  }else{
+    document.getElementById("btnPost").submit();
   }
 });
 
-function toggleForm() {
-  var formContainer = document.getElementById("form-container");
-  if (formContainer.style.display === "none") {
-    formContainer.style.display = "block";
-  } else {
-    formContainer.style.display = "none";
-  }
-}
