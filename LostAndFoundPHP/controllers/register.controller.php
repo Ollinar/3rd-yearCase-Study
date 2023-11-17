@@ -48,7 +48,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         redirect('/register', 303);
         die();
     }
-    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $hash = password_hash($password, PASSWORD_ARGON2ID);
     $dao->queryDB('INSERT INTO tbl_user (col_StudNum,col_username,col_password,col_email) VALUES (?,?,?,?)', [$studIDNum,$username, $hash,$email]);
     $res = $dao->queryDB('SELECT col_userID AS userID FROM tbl_user WHERE col_username = ?',[$username])->fetch();
 
