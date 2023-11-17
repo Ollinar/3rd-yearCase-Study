@@ -7,3 +7,7 @@ function redirect($url, $status = 0) {
 function sanitizeData($data){
     return htmlspecialchars($data);
 }
+
+function urlis($ulr){
+    return parse_url($_SERVER['REQUEST_URI'])['path'] === $ulr;
+}

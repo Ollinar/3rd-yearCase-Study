@@ -10,10 +10,10 @@ $routes =[
     '/dashboard' => 'controllers/dashboard.controller.php',
     '/login' => 'controllers/login.controller.php',
     '/register' => 'controllers/register.controller.php',
-    '/admin' => 'controllers/admin.controller.php',
-    '/login/auth' => 'controllers/login.auth.php',
     '/504' => 'controllers/504.controller.php',
-    '/adminDashboard' => 'controllers/adminDashboard.controller.php'
+    '/logout' => 'controllers/logout.php',
+    '/adminDashboard' => 'controllers/adminDashboard.controller.php',
+    '/uploadPost' => 'controllers/upload.controller.php'
 ];
 
     $route = $routes[$url];

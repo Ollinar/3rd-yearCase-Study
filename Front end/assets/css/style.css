@@ -93,16 +93,18 @@ aside{
   }
 }
 
-
+input{
+  border: 1px solid green;
+}
+textarea{
+  border: 1px solid green;
+}
 
 .gb-color {
-  background: hsla(233, 100%, 90%, 1);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(92, 92, 92);
+}
 
-  background: linear-gradient(90deg, hsla(233, 100%, 90%, 1) 0%, hsla(0, 0%, 89%, 1) 100%);
-  
-  background: -moz-linear-gradient(90deg, hsla(233, 100%, 90%, 1) 0%, hsla(0, 0%, 89%, 1) 100%);
-  
-  background: -webkit-linear-gradient(90deg, hsla(233, 100%, 90%, 1) 0%, hsla(0, 0%, 89%, 1) 100%);
-  
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#CAD0FF", endColorstr="#E3E3E3", GradientType=1 );
+.activeClass:focus{
+  background-color: #b0c4de;
 }
