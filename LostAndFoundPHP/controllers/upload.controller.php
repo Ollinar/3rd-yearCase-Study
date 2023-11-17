@@ -9,6 +9,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
     die();
 }
 
+
 if (isset($_POST['postTitle'])) {
     redirect('/',302);
     die();
@@ -20,7 +21,7 @@ if ($postTitle > 50) {
 }
 
 
-$postDesc = $_POST['postdesc']??null;
+$postDesc = $_POST['postDesc']??null;
 if(isset($_FILES['postFiles'])) {
     $filesUp= $_FILES['postFiles[]'];
     var_dump($filesUp);
