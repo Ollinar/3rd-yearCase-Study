@@ -224,7 +224,7 @@
 
                         <!--Hidden Upload Form-->
                         <div id="popUpload" class="hidden fixed inset-0 shadow-2xl  flex items-center justify-center">
-                            <form class="w-full" action="/uploadPost" enctype="multipart/form-data" method="post">
+                            <form id="uploadForm" class="w-full" action="/uploadPost" enctype="multipart/form-data" method="post">
                                 <div
                                     class="editor bg-white text-gray-800 mx-auto w-full flex flex-col text-white p-4 border-2 shadow-lg max-w-2xl  p-1 rounded-lg shadow-xl dark:bg-slate-800">
                                     <h2 class=" text-center font-bold text-2xl text-gray-800 p-4">Upload Item</h2>
@@ -249,7 +249,7 @@
                                         for="file_input">Upload file</label>
                                     <input
                                         class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                        id="file_input" type="file" name="files[]" multiple accept=".png,.jpg,.jpeg,.bmp">
+                                        id="file_input" type="file" name="postFiles[]" multiple accept=".png,.jpg,.jpeg,.bmp">
     
     
     
@@ -258,8 +258,7 @@
                                             type="button"
                                             class="text-gray-800 btn border-2 border-green-300 rounded-full p-1 px-4 font-semibold text-white ml-auto bg-white  p-1 ">Cancel</button>
                                         <button
-                                            
-                                            type="button"
+                                            id="btnPost"
                                             class="btn border border-white  p-1 px-4 font-semibold text-white rounded-full ml-2 bg-purple-600 p-1 hover:bg-purple-600 hover:text-white ">Post</button>
                                     </div>
                                 </div>
