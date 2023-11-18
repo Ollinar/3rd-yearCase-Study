@@ -213,7 +213,8 @@
                         </button>
                     </li>
 
-                        <!--Hidden Upload Form-->
+                    <!--Hidden Upload Form-->
+                    <form action="">
                         <div id="popUpload" class="hidden fixed inset-0 shadow-2xl  flex items-center justify-center">
                         
                         <div
@@ -234,9 +235,8 @@
                             </div>
                             <!-- buttons -->
                             
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file limit (10 MB per file)<span id="hiddenTxt" style="color: red;" class="ml-4"></span></label>
                             <input id="file_input" class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" multiple="true" type="file">
-                            <p id="hiddenTxt" class="hidden text-red-800">Files size too big </p>
 
                             <div class=" w-full"> 
                                 <div class="w-full p-2">
@@ -250,12 +250,12 @@
                             <div class="buttons flex ml-auto py-2">
                                 <button id="closeFormButton" type="button"
                                     class="text-gray-800 btn border-2 border-green-300 rounded-full p-1 px-4 font-semibold text-white ml-auto bg-white  p-1 ">Cancel</button>
-                                <button id="btnPost" type="button"
+                                <button id="btnPost" type="submit"
                                     class="btn border border-white  p-1 px-4 font-semibold text-white rounded-full ml-2 bg-purple-600 p-1 hover:bg-purple-600 hover:text-white ">Post</button>
                             </div>
                         </div>
                     </div>
-
+                    </form>
                     <!--Hidden Upload Form-->
                     <!-- Profile menu -->
                     <li class="relative">

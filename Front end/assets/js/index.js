@@ -4,8 +4,9 @@ document.getElementById('openForm').addEventListener('click', function() {
   document.getElementById('popUpload').classList.remove('hidden');
 });
 
-document.getElementById('closeFormButton').addEventListener('click', function() {
+document.getElementById('closeFormButton').addEventListener('click', function(e) {
   document.getElementById('popUpload').classList.add('hidden');
+  e.preventDefault();
 });
 
 // document.getElementById('open').addEventListener('click', function() {
@@ -65,40 +66,66 @@ const textarea = document.querySelectorAll('textarea[data-te-input-showcounter="
     });
   });
 
+
+
 // check the limit of file upload
 
-document.getElementById("btnPost").addEventListener('click',function(e){
-  if(document.getElementById('file_input').files.length > 5){
-    alert("5 files only .|.")
-    e.preventDefault();
-  }
+
+
+const input = document.querySelector('input[type="file"]');
+const hiddenTxt = document.getElementById('hiddenTxt');
+
+input.addEventListener('change',()=>{
+  validateSize();
+  document.getElementById("btnPost").addEventListener('click',function(e){
+    if(document.getElementById('file_input').files.length > 5){
+      alert("5 files only .|.")
+      e.preventDefault();
+    }
+  });
 });
 
-//Delete alert poup
+document.querySelector('form').addEventListener('submit',(e)=>{
+  alert('Error');
+  e.preventDefault('submit');
 
-// const delBtn = document.querySelectorAll('.delBtn');
+  const res = validateSize();
 
-// delBtn.forEach((button) =>{
-//   button.addEventListener('click',()=>{
-//     print('Button clicked');
-//   });
-// });
+  if(res){
+    throw res;
+  }
+  //IBang Validation function
 
-function displayDel(){
-  swal("Are you sure?", {
-    dangerMode: true,
-    buttons: true,
-  });
-};
+  //ikaw na bahala mag alis neto ranillo placeholder lang to
 
-//check the file size limit
+  hiddenTxt.textContent = "UPLOADING..";
 
-const uploadField = document.getElementById("file");
-const textMsg = document.getElementById('hiddenTxt');
-const maxSize = 20; // 2MB
-uploadField.onchange = function() {
-    if (this.files[0].size > maxSize) {
-       textMsg.classList.remove('hidden');
-    }
+});
+//check  size
+function validateSize(){
+  const file =  input.files[0];
+
+  if(!file){
+    const err = new Error("No Selected File");
+    hiddenTxt.textContent = err.message;
+    return err;
+  }
+
+  const limit = 10000;
+  // const size = file.size/1024;
+  let size = 0;
+  for(item of input.files){
+    size+= item.size/1024;
+  }
+  if (size > limit){
+    const err = new Error(`File too big :${(size/1024).toFixed(2)} MB`);
+    hiddenTxt.textContent = err.message;
+    return err;
+  }else{
+    hiddenTxt.textContent = "✅";
+    return false;
+  }
 }
+
+
 
