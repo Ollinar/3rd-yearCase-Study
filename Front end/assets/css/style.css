@@ -111,6 +111,24 @@ textarea{
 
 
 .imgcont{
+  background-color: #f2f2f2;
   overflow: scroll;
-  padding: 30px;
+  padding:5px 0px;
+}
+td.desc{
+  max-width: 350px;
+  word-wrap: break-word;
+} 
+.desc > div{
+
+  max-width: 350px;
+  overflow-x: scroll;
+  word-wrap: break-word;
+}
+.imgcont::-webkit-scrollbar{
+  display: none;
+
+}
+input[type="file"]:invalid{
+  outline: 2px red;
 }
