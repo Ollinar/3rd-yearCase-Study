@@ -8,14 +8,7 @@ document.getElementById('closeFormButton').addEventListener('click', function(e)
   document.getElementById('popUpload').classList.add('hidden');
   e.preventDefault();
 });
-
-// document.getElementById('open').addEventListener('click', function() {
-//     document.getElementById('modal').classList.remove('hidden');
-//   });
-
-//   document.getElementById('close').addEventListener('click', function() {
-//     document.getElementById('modal').classList.add('hidden');
-//   });
+// ----- end  Open Upload Form
 
 
 // ------- Open edit status  modal
@@ -29,6 +22,7 @@ document.addEventListener('click', function (event) {
       modal.classList.add('hidden');
   }
 });
+// ------- end Open edit status  modal
 
 // ------- Open Image Preview
 var modal = document.getElementById('modal');
