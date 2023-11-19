@@ -41,7 +41,7 @@
             aria-hidden="true"
           >
             <img
-              src="./shape.svg"
+              src="/assets/img/shape.svg"
               class="max-w-none"
               width="852"
               height="582"
@@ -55,7 +55,7 @@
             aria-hidden="true"
           >
             <img
-              src="./shape.svg"
+              src="/assets/img/shape.svg"
               class="max-w-none"
               width="852"
               height="582"
@@ -107,6 +107,6 @@
       </div>
     </main>
     <!-- For Particle -->
-    <script src="../js/particle-animation.js"></script>
+    <script src="/assets/js/particle-animation.js"></script>
   </body>
 </html>
