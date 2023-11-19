@@ -2,24 +2,24 @@
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lost And Found</title>
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <script src="./assets/js/init-alpine.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
-    <script src="./assets/js/charts-lines.js" defer></script>
-    <script src="./assets/js/charts-pie.js" defer></script>
-    <script src="./assets/js/index.js " defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
-    <script src="https://cdn.jsdelivr.net/gh/alpine-collective/alpine-magic-helpers@0.3.x/dist/index.js" defer></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lost And Found</title>
+<link rel="stylesheet" href="./assets/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+<link rel="stylesheet" href="./assets/css/tailwind.output.css" />
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="./assets/js/init-alpine.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+<script src="./assets/js/charts-lines.js" defer></script>
+<script src="./assets/js/charts-pie.js" defer></script>
+<script src="./assets/js/index.js " defer></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+ <!-- htmx -->
+ <script src="https://unpkg.com/htmx.org@1.9.8" integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -40,27 +40,10 @@
                     </a>
                 </div>
 
-                <ul class="mt-2">
-                    <li class="relative px-6 py-3 border-b">
-                        <?php if (urlis("/")): ?>
-                            <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
-                                aria-hidden="true"></span>
-                        <?php endif ?>
-                        <a class="inline-flex items-center w-full text-sm font-semibold text-gray-800 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200 dark:text-gray-100"
-                            href="/">
-                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
-                            </svg>
 
-                            <span class="ml-4 <?= urlis('/') ? 'text-purple-600' : '' ?>">Home</span>
-                        </a>
-                    </li>
-                </ul>
                 <ul class="mt-6">
                     <li class="relative px-6 py-3 border">
-                        <?php if (urlis("/dashboard")): ?>
+                        <?php if (urlis("/")): ?>
                             <span class="absolute inset-y-0 left-0 w-1 bg-purple-600 rounded-tr-lg rounded-br-lg"
                                 aria-hidden="true"></span>
                         <?php endif ?>
@@ -72,7 +55,7 @@
                                     d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6a1.125 1.125 0 01-1.125-1.125v-3.75zM14.25 8.625c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v8.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-8.25zM3.75 16.125c0-.621.504-1.125 1.125-1.125h5.25c.621 0 1.125.504 1.125 1.125v2.25c0 .621-.504 1.125-1.125 1.125h-5.25a1.125 1.125 0 01-1.125-1.125v-2.25z" />
                             </svg>
 
-                            <span class="ml-4 <?= urlis('/dashboard') ? 'text-purple-600' : '' ?>">Dashboard</span>
+                            <span class="ml-4 <?= urlis('/') ? 'text-purple-600' : '' ?>">Dashboard</span>
                         </a>
                     </li>
                 </ul>
@@ -224,34 +207,16 @@
 
                         <!--Hidden Upload Form-->
                         <div id="popUpload" class="hidden fixed inset-0 shadow-2xl  flex items-center justify-center">
-                            <form id="uploadForm" class="w-full" action="/uploadPost" enctype="multipart/form-data" method="post">
-                                <div
+                            <form id="uploadForm" class="w-full" 
+                            action="/uploadPost" enctype="multipart/form-data" method="post"
+                            hx-post="/uploadPost" hx-target="#uploadFields">
+                                <div    
                                     class="editor bg-white text-gray-800 mx-auto w-full flex flex-col text-white p-4 border-2 shadow-lg max-w-2xl  p-1 rounded-lg shadow-xl dark:bg-slate-800">
                                     <h2 class=" text-center font-bold text-2xl text-gray-800 p-4">Upload Item</h2>
-                                    <input data-te-input-showcounter="true"
-                                        class=" text-gray-800  title bg-gray-100 border border-green-900 p-2 outline-none rounded-md"
-                                        maxlength="50" spellcheck="false" placeholder="Lost item name" type="text" name="postTitle">
-                                    <!-- icons -->
-                                    <div class=" flex text-gray-500 m-2 p-3">
-                                        <div id="char-count" class="count ml-auto text-black text-xs font-semibold">0</div>
-                                    </div>
-                                    <textarea data-te-input-showcounter="true" id="text"
-                                        class="description bg-gray-100 p-3 h-60 border border-green-900  rounded-md"
-                                        spellcheck="false" maxlength="255" placeholder="Describe lost item" name="postDesc"></textarea>
-    
-                                    <!-- icons -->
-                                    <div class=" flex text-gray-500 m-2 p-3">
-                                        <div id="char-count" class="count ml-auto text-black text-xs font-semibold">0</div>
-                                    </div>
-                                    <!-- buttons -->
-    
-                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                        for="file_input">Upload file</label>
-                                    <input
-                                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                                        id="file_input" type="file" name="postFiles[]" multiple accept=".png,.jpg,.jpeg,.bmp">
-    
-    
+                                    <div id="uploadFields">
+                                        <?php   include('views/fragments/upload_fields.php')?>
+
+                                    </div>   
     
                                     <div class="buttons flex ml-auto py-2">
                                         <button id="closeFormButton"

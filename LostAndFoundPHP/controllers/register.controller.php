@@ -22,30 +22,30 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     $passwordConf = $_POST['passwordConf'];
     
     if (empty($username) || empty($password)||empty($passwordConf) || empty($email) || empty($studIDNum)) {
-        $_SESSION['errors'] = "Please Fill All Fields";
-        redirect('/register', 303);
+        $error = "Please Fill All Fields";
+        require('views/fragments/register_fields.php');
         die();
     }
     $entry = $dao->queryDB('CALL getUserByUsername(?)', [$username])->fetchAll();
     if (!empty($entry)) {
-        $_SESSION['errors'] = "Username already taken";
-        redirect('/register', 303);
+        $error = "Username already taken";
+        require('views/fragments/register_fields.php');
         die();
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $_SESSION['errors'] = "Please Enter A Valid E-mail";
-        redirect('/register', 303);
+        $error = "Please Enter A Valid E-mail";
+        require('views/fragments/register_fields.php');
         die();
     }
     if (strlen($password) < 8) {
-        $_SESSION['errors'] = "Password too short";
-        redirect('/register', 303);
+        $error = "Password too short";
+        require('views/fragments/register_fields.php');
         die();
     }
 
     if($password !== $passwordConf){
-        $_SESSION['errors'] = "Passwords doesn't match";
-        redirect('/register', 303);
+        $error = "Passwords doesn't match";
+        require('views/fragments/register_fields.php');
         die();
     }
     $hash = password_hash($password, PASSWORD_ARGON2ID);
@@ -57,7 +57,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         $_SESSION['username'] = $username;
         $_SESSION['userEmail'] = $email;
         $_SESSION['userRole'] = 'user';
-        redirect('/', 303);
+        hxRedirect('/', 303);
         die();
     }
 }

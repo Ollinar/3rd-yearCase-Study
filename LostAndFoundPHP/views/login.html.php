@@ -17,6 +17,8 @@
       font-family: karla;
     }
   </style>
+  <!-- htmx -->
+  <script src="https://unpkg.com/htmx.org@1.9.8" integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr" crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-white font-family-karla h-screen">
@@ -25,24 +27,14 @@
     <div class="w-full md:w-1/2 flex flex-col">
       <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
         <p class="text-center text-3xl">Welcome.</p>
-        <form class="flex flex-col pt-3 md:pt-8" method="post" action="/login">
-        <?php include('views/fragments/errors.php'); ?>
-           
-
-          <div class="flex flex-col pt-4">
-            <label class="text-lg">Username</label>
-            <input type="text" id="Username" name="username" placeholder="Username"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
+        <form class="flex flex-col pt-3 md:pt-8" method="post" action="/login"
+          hx-post="/login" hx-target="#loginFields" hx-indicator="#indic">
+          <div id="loginFields">
+            <?php include('views/fragments/login_fields.php'); ?>
           </div>
-
-          <div class="flex flex-col pt-4">
-            <label class="text-lg">Password</label>
-            <input type="password" id="password" name="password" placeholder="Password"
-              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
-          </div>
-
-          <input type="submit" value="Log In" name="login_user"
-            class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8" />
+            <button name="login_user" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
+              Login<img src="/assets/img/svg-loaders/bars.svg" id="indic" class="htmx-indicator" width="20px">
+            </button>
         </form>
         <div class="text-center pt-12 pb-12">
           <p>

@@ -11,13 +11,15 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
 }
 
 
-if (!isset($_POST['postTitle'])) {
-    redirect('/', 302);
+if ($_POST['postTitle'] === '') {
+    $error = 'Please enter a title';
+    require_once('views/fragments/upload_fields.php');
     die();
 }
 $postTitle = $_POST['postTitle'];
 if (strlen($postTitle) > 50) {
-    redirect('/', 302);
+    $error = 'Title is too long, please keep it under 50';
+    require_once('views/fragments/upload_fields.php');
     die();
 }
 $postDesc = $_POST['postDesc'] ?? null;
@@ -33,33 +35,38 @@ if ($_FILES['postFiles']['name'][0] !== '') {
     }
     $filesUp = $_FILES['postFiles'];
     $imgMimes = ['image/bmp', 'image/jpeg', 'image/x-png', 'image/png', 'image/gif'];
-    $imgExt = ['jpeg','jpg','png','bmp'];
+    $imgExt = ['jpeg', 'jpg', 'png', 'bmp'];
 
     for ($i = 0; $i < $fileCount; $i++) {
         //if this is not set, it means that the server didn't accept it (maybe because its too big)
         if ($filesUp['tmp_name'][$i] === '') {
-            redirect('/', 302);
+            $error = 'Image Files might be too big';
+            require_once('views/fragments/upload_fields.php');
             die();
         }
 
         if ($filesUp['error'][$i] !== UPLOAD_ERR_OK) {
-            redirect('/', 302);
+            $error = 'Error uploading file';
+            require_once('views/fragments/upload_fields.php');
             die();
         }
         if (!is_uploaded_file($filesUp['tmp_name'][$i])) {
-            redirect('/', 302);
+            $error = 'Error while processing files';
+            require_once('views/fragments/upload_fields.php');
             die();
         }
 
         $ext = pathinfo($filesUp['name'][$i], PATHINFO_EXTENSION);
 
         if (!in_array($ext, $imgExt)) {
-            redirect('/', 302);
+            $error = 'Unsupported file extension';
+            require_once('views/fragments/upload_fields.php');
             die();
         }
 
         if (!in_array(mime_content_type($filesUp['tmp_name'][$i]), $imgMimes)) {
-            redirect('/', 302);
+            $error = 'Unsupported file type';
+            require_once('views/fragments/upload_fields.php');
             die();
         }
     }
@@ -76,11 +83,11 @@ if ($_FILES['postFiles']['name'][0] !== '') {
     for ($i = 0; $i < $fileCount; $i++) {
         //if this is not set, it means that the server didn't accept it (maybe because its too big)
         $ext = pathinfo($filesUp['name'][$i], PATHINFO_EXTENSION);
-        $newName= uniqid($postID['postID'] .'-'.$i.'-'). '.'.$ext;
-        $newPath = join(DIRECTORY_SEPARATOR,[$fileUpDir,$newName]);
+        $newName = uniqid($postID['postID'] . '-' . $i . '-') . '.' . $ext;
+        $newPath = join(DIRECTORY_SEPARATOR, [$fileUpDir, $newName]);
         move_uploaded_file($filesUp['tmp_name'][$i], $newPath);
-        $dao->queryDB('Call insertpic(?,?,?)',[$postID['postID'],$newPath,$_SESSION['userRole']]);
+        $dao->queryDB('Call insertpic(?,?,?)', [$postID['postID'], $newPath, $_SESSION['userRole']]);
     }
 }
-redirect('/',302)
-?>
+redirect('/', 302)
+    ?>

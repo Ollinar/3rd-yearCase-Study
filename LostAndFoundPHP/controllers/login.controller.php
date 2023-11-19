@@ -14,8 +14,8 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     $password = $_POST['password'];
 
     if (empty($username) || empty($password)) {
-        $_SESSION['errors']= 'Please Fill All Fields';
-        redirect('/login', 303);
+        $error= 'Please Fill All Fields';
+        require_once('views/fragments/login_fields.php');
         die();
     }
 
@@ -23,8 +23,8 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
 
 
     if (empty($entry)) {
-        $_SESSION['errors']= 'Not Registered';
-        redirect('/login', 303);
+        $error= 'Username not Registered';
+        require_once('views/fragments/login_fields.php');
         die();
 
         //should use verify_password
@@ -33,12 +33,12 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         $_SESSION['username'] = $username;
         $_SESSION['userEmail'] = $entry['userEmail'];
         $_SESSION['userRole'] = $entry['userRole'];
-        redirect('/',302);
+        require_once('views/fragments/login_fields.php');
+        hxRedirect('/',302);
         die();
     } else {
-        var_dump($entry);
-        $_SESSION['errors']= 'Wrong Password';
-        redirect('/login', 303);
+        $error= 'Wrong Password';
+        require_once('views/fragments/login_fields.php');
         die();
     }
 }
