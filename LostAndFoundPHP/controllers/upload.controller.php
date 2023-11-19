@@ -24,10 +24,9 @@ if (strlen($postTitle) > 50) {
 }
 $postDesc = $_POST['postDesc'] ?? null;
 
-
 //verifiying file uploads
 //chack to see if there was a file uploaded. issset or empty doesnt work because index 0 is always set to empty string
-if ($_FILES['postFiles']['name'][0] !== '') {
+if (isset($_FILES['postFiles']['name'][0])) {
     $fileCount = count($_FILES['postFiles']['name']);
     if ($fileCount > 5) {
         redirect('/', 302);
@@ -75,7 +74,7 @@ $postID = $dao->queryDB('CALL createpost(?,?,?,?,?)', [$postTitle, $postDesc, is
 
 
 //saving files
-if ($_FILES['postFiles']['name'][0] !== '') {
+if (isset($_FILES['postFiles']['name'][0])) {
     $fileCount = count($_FILES['postFiles']['name']);
     $fileUpDir = 'postPic';
     $filesUp = $_FILES['postFiles'];
@@ -89,5 +88,5 @@ if ($_FILES['postFiles']['name'][0] !== '') {
         $dao->queryDB('Call insertpic(?,?,?)', [$postID['postID'], $newPath, $_SESSION['userRole']]);
     }
 }
-redirect('/', 302)
+hxRedirect('/', 302)
     ?>

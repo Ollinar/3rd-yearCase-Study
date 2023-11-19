@@ -2,23 +2,26 @@
 <html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
 
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Lost And Found</title>
-<link rel="stylesheet" href="./assets/css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-<link rel="stylesheet" href="./assets/css/tailwind.output.css" />
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-<script src="./assets/js/init-alpine.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
-<script src="./assets/js/charts-lines.js" defer></script>
-<script src="./assets/js/charts-pie.js" defer></script>
-<script src="./assets/js/index.js " defer></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
- <!-- htmx -->
- <script src="https://unpkg.com/htmx.org@1.9.8" integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lost And Found</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/tailwind.output.css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="./assets/js/init-alpine.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+    <script src="./assets/js/charts-lines.js" defer></script>
+    <script src="./assets/js/charts-pie.js" defer></script>
+    <script src="./assets/js/index.js " defer></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <!-- htmx -->
+    <script src="https://unpkg.com/htmx.org@1.9.8"
+        integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr"
+        crossorigin="anonymous"></script>
 
 </head>
 
@@ -207,23 +210,21 @@
 
                         <!--Hidden Upload Form-->
                         <div id="popUpload" class="hidden fixed inset-0 shadow-2xl  flex items-center justify-center">
-                            <form id="uploadForm" class="w-full" 
-                            action="/uploadPost" enctype="multipart/form-data" method="post"
-                            hx-post="/uploadPost" hx-target="#uploadFields">
-                                <div    
+                            <form id="uploadForm" class="w-full" action="/uploadPost" enctype="multipart/form-data"
+                                method="post" hx-post="/uploadPost" hx-encoding="multipart/form-data"
+                                hx-target="#uploadFields" hx-on::after-request="reAddTextConuter()">
+                                <div
                                     class="editor bg-white text-gray-800 mx-auto w-full flex flex-col text-white p-4 border-2 shadow-lg max-w-2xl  p-1 rounded-lg shadow-xl dark:bg-slate-800">
                                     <h2 class=" text-center font-bold text-2xl text-gray-800 p-4">Upload Item</h2>
                                     <div id="uploadFields">
-                                        <?php   include('views/fragments/upload_fields.php')?>
+                                        <?php include('views/fragments/upload_fields.php') ?>
 
-                                    </div>   
-    
+                                    </div>
+
                                     <div class="buttons flex ml-auto py-2">
-                                        <button id="closeFormButton"
-                                            type="button"
+                                        <button id="closeFormButton" type="button"
                                             class="text-gray-800 btn border-2 border-green-300 rounded-full p-1 px-4 font-semibold text-white ml-auto bg-white  p-1 ">Cancel</button>
-                                        <button
-                                            id="btnPost"
+                                        <button id="btnPost"
                                             class="btn border border-white  p-1 px-4 font-semibold text-white rounded-full ml-2 bg-purple-600 p-1 hover:bg-purple-600 hover:text-white ">Post</button>
                                     </div>
                                 </div>

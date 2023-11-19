@@ -58,6 +58,8 @@ const textarea = document.querySelectorAll('textarea[data-te-input-showcounter="
     });
   });
 
+
+
   textarea.forEach(textarea => {
     const charCount = textarea.nextElementSibling.querySelector('div');
 
@@ -65,6 +67,31 @@ const textarea = document.querySelectorAll('textarea[data-te-input-showcounter="
       charCount.textContent = `${textarea.value.length} / ${textarea.maxLength}`;
     });
   });
+
+
+// --------------re add text counter
+function reAddTextConuter() {
+  const inputFields = document.querySelectorAll('input[data-te-input-showcounter="true"]');
+  const textarea = document.querySelectorAll('textarea[data-te-input-showcounter="true"]');
+
+  
+  inputFields.forEach(inputField => {
+    const charCount = inputField.nextElementSibling.querySelector('div');
+
+    inputField.addEventListener('input', () => {
+      charCount.textContent = `${inputField.value.length} / ${inputField.maxLength}`;
+    });
+  });
+  
+  textarea.forEach(textarea => {
+    const charCount = textarea.nextElementSibling.querySelector('div');
+
+    textarea.addEventListener('input', () => {
+      charCount.textContent = `${textarea.value.length} / ${textarea.maxLength}`;
+    });
+  });
+
+}
 
 // check the limit of file upload
 
