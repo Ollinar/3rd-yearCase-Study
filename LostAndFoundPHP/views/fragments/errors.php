@@ -1,7 +1,6 @@
 
-<?php  if (isset($_SESSION['errors'])) : ?>
+<?php  if (isset($error)) : ?>
   <div class="error">
-    <?=$_SESSION['errors'] ?>
+    <?=$error?>
   </div>
-  <?php unset($_SESSION['errors']);?>
 <?php  endif ?>
