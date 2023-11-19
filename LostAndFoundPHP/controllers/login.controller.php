@@ -1,47 +1,44 @@
 <?php
-require_once( $_SERVER['DOCUMENT_ROOT']."/util.php");
-require_once( $_SERVER['DOCUMENT_ROOT']."/debugUtil.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/util.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/debugUtil.php");
 
+if (isset($_SESSION['userID'])) {
+    redirect('/',302);
+    die();
+}
 
 if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     require 'views/login.html.php';
-}else{
-    $_SESSION['errors'] = array();
+} else {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    
+
     if (empty($username) || empty($password)) {
-        array_push($_SESSION['errors'],'Please Fill All Fields');
-        redirect('/login',303);
-        die();
-    }
-    try{
-
-        $entry = $dao->queryDB('CALL getUser(?)',[$username])->fetch();
-    }catch(PDOException $e){
-        redirect('/login',504);
-
+        $error= 'Please Fill All Fields';
+        require_once('views/fragments/login_fields.php');
         die();
     }
 
-    if (!$entry) {
-        redirect('/login',504);
-    }
+    $entry = $dao->queryDB('CALL getUserByUsername(?)', [$username])->fetch();
+
+
     if (empty($entry)) {
-        array_push($_SESSION['errors'],'Not Registered');
-        redirect('/login',303);
+        $error= 'Username not Registered';
+        require_once('views/fragments/login_fields.php');
         die();
 
         //should use verify_password
-        
-    }else if($entry['userPassword'] === $password){
-        var_dump($entry);
-        redirect('/dashboard');
+    } else if (password_verify($password, $entry['userPassword'])) {
+        $_SESSION['userID'] = $entry['userID'];
+        $_SESSION['username'] = $username;
+        $_SESSION['userEmail'] = $entry['userEmail'];
+        $_SESSION['userRole'] = $entry['userRole'];
+        require_once('views/fragments/login_fields.php');
+        hxRedirect('/',302);
         die();
-    }else{
-        var_dump($entry);
-        array_push($_SESSION['errors'],'Wrong Password');
-        redirect('/login',303);
+    } else {
+        $error= 'Wrong Password';
+        require_once('views/fragments/login_fields.php');
         die();
     }
 }

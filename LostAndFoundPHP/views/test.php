@@ -6,7 +6,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>asdasda</h1>
-    
+    <form action="/uploadPost" method="post"  enctype='multipart/form-data'>
+
+        <input type="file" name="files[]" id="" multiple>
+        <input type="submit" value="submit">
+    </form>
 </body>
 </html>

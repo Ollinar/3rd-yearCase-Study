@@ -7,16 +7,12 @@ $url = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes =[
     '/' => 'controllers/index.controller.php',
-    '/dashboard' => 'controllers/dashboard.controller.php',
     '/login' => 'controllers/login.controller.php',
     '/register' => 'controllers/register.controller.php',
-    '/admin' => 'controllers/admin.controller.php',
-    '/login/auth' => 'controllers/login.auth.php',
     '/504' => 'controllers/504.controller.php',
-    '/adminDashboard' => 'controllers/adminDashboard.controller.php'
+    '/logout' => 'controllers/logout.php',
+    '/uploadPost' => 'controllers/upload.controller.php'
 ];
-
-
 
     $route = $routes[$url];
     
