@@ -38,7 +38,7 @@
 
             </div>
             <button name="login_user" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
-              Register<img src="/assets/img/svg-loaders/bars.svg" id="indic" class="htmx-indicator" width="20px">
+              <img src="/assets/img/svg-loaders/bars.svg" id="indic" class="htmx-indicator absolute my-auto" width="20px">Register
             </button>
           </form>
           <div class="text-center pt-12 pb-12">
