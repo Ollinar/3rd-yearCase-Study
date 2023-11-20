@@ -224,7 +224,7 @@
                                     <div class="buttons flex ml-auto py-2">
                                         <button id="closeFormButton" type="button"
                                             class="text-gray-800 btn border-2 border-green-300 rounded-full p-1 px-4 font-semibold text-white ml-auto bg-white  p-1 ">Cancel</button>
-                                        <button id="btnPost"
+                                        <button id="btnPost" type="submit"
                                             class="btn border border-white  p-1 px-4 font-semibold text-white rounded-full ml-2 bg-purple-600 p-1 hover:bg-purple-600 hover:text-white ">Post</button>
                                     </div>
                                 </div>

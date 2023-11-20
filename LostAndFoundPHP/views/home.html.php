@@ -8,9 +8,12 @@
         <!-- Cards -->
         <div class="grid gap-6 h-auto md:grid-cols-2 xl:grid-cols-4  hover:cursor-pointer">
             <a href="/?type=lost">
-                <div class="flex items-center h-32 border  p-4 bg-white rounded-lg shadow-xl dark:bg-gray-800">
-                    <div
-                        class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+                <div class="flex items-center h-32 border  p-4 <?php if (isset($_GET['type'])) {
+                    $type = $_GET['type'];
+                    echo $type === 'lost' ? 'bg-blue-100' : 'bg-white';
+                } ?> rounded-lg shadow-xl dark:bg-gray-800">
+                    <div class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500
+                        ">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -30,7 +33,10 @@
             </a>
             <!-- Card -->
             <a href="/?type=found">
-                <div class="flex items-center h-32 border p-4 bg-white rounded-lg shadow-xl dark:bg-gray-800">
+                <div class="flex items-center h-32 border p-4 <?php if (isset($_GET['type'])) {
+                    $type = $_GET['type'];
+                    echo $type === 'found' ? 'bg-blue-100' : 'bg-white';
+                } ?>  rounded-lg shadow-xl dark:bg-gray-800">
                     <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="w-6 h-6">
@@ -222,30 +228,35 @@
                                     </div>
                                 </td>
                             </tr>
-                        <?php endforeach ?>
-                    <?php endif ?>
-                </tbody>
-            </table>
+                        <?php endforeach ?>      
+                    </tbody>
+                </table>
+            </div>
+        <?php else: ?>
+            <div class="lg:w-full  flex justify-center items-center">
+                <div class="pb-16">
+                    <img class=" lg:max-w-2xl max-h-xl dark:opacity-50" src="./assets/img/dash.svg" alt="Research">
+                </div>
+            </div>
+        <?php endif ?>
+        <!--Hidden modal-->
+        <div id="modal"
+            class="hidden h-full fixed inset-0 top-0 left-0 mx-auto flex flex-col justify-center items-center ">
+            <div class=" flex flex-col items-center rounded-lg p-10 imgcont border-2"
+                style="height: 500px; width:600px;">
+                <!-- The close button -->
+                <div class=" relative">
+                    <a class="bg-blue-100 absolute m-6 right-0 sticky ml-28 w-auto px-4 text-red-100 rounded-full text-9xl font-bold"
+                        style="font-size: 30px;" href="javascript:void(0)" onclick="closeModal()">&times;</a>
+                    <!-- A big image will be displayed here -->
+                    <img id="modal-img" width="700" height="300" class="rounded-lg p-4" />
+                    <img id="modal-img" width="700" height="300" class="rounded-lg p-4" />
+                    <img id="modal-img" width="700" height="300" class="rounded-lg p-4" />
+                    <img id="modal-img" width="700" height="300" class="rounded-lg p-4" />
+                </div>
+            </div>
         </div>
-                                        <!--Hidden modal-->
-                                        <div id="modal"
-                                            class="hidden h-full fixed inset-0 top-0 left-0 mx-auto flex flex-col justify-center items-center ">
-                                            <div class=" flex flex-col items-center rounded-lg p-10 imgcont border-2"
-                                                style="height: 500px; width:600px;">
-                                                <!-- The close button -->
-                                                <div class=" relative">
-                                                    <a class="bg-blue-100 absolute m-6 right-0 sticky ml-28 w-auto px-4 text-red-100 rounded-full text-9xl font-bold"
-                                                        style="font-size: 30px;" href="javascript:void(0)"
-                                                        onclick="closeModal()">&times;</a>
-                                                    <!-- A big image will be displayed here -->
-                                                    <img id="modal-img" width="700" height="300" class="rounded-lg p-4"/>
-                                                    <img id="modal-img" width="700" height="300" class="rounded-lg p-4"/>
-                                                    <img id="modal-img" width="700" height="300" class="rounded-lg p-4"/>
-                                                    <img id="modal-img" width="700" height="300" class="rounded-lg p-4"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--Hidden modal-->
+        <!--Hidden modal-->
 
 
 
