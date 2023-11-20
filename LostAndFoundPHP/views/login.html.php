@@ -33,7 +33,7 @@
             <?php include('views/fragments/login_fields.php'); ?>
           </div>
             <button name="login_user" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
-              Login<img src="/assets/img/svg-loaders/bars.svg" id="indic" class="htmx-indicator" width="20px">
+              <img src="/assets/img/svg-loaders/bars.svg" id="indic" class="htmx-indicator absolute my-auto" width="20px">Login
             </button>
         </form>
         <div class="text-center pt-12 pb-12">
@@ -60,3 +60,5 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>
+
+
