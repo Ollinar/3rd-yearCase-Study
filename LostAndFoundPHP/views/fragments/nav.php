@@ -216,7 +216,7 @@
                                 <div
                                     class="editor bg-white text-gray-800 mx-auto w-full flex flex-col text-white p-4 border-2 shadow-lg max-w-2xl  p-1 rounded-lg shadow-xl dark:bg-slate-800">
                                     <h2 class=" text-center font-bold text-2xl text-gray-800 p-4">Upload Item</h2>
-                                    <div id="uploadFields">
+                                    <div class="" id="uploadFields">
                                         <?php include('views/fragments/upload_fields.php') ?>
 
                                     </div>
