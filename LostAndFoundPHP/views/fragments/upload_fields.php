@@ -1,6 +1,6 @@
 <?php include('views/fragments/errors.php'); ?> 
 <input data-te-input-showcounter="true"
-    class=" text-gray-800  title bg-gray-100 border border-green-900 p-2 outline-none rounded-md" maxlength="50"
+    class=" text-gray-800  title bg-gray-100 w-full border border-green-900 p-2 outline-none rounded-md" maxlength="50"
     spellcheck="false" placeholder="Lost item name" type="text" name="postTitle">
 <!-- icons -->
 <div class=" flex text-gray-500 m-2 p-3">
