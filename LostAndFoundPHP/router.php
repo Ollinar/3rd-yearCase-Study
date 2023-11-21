@@ -11,7 +11,8 @@ $routes =[
     '/register' => 'controllers/register.controller.php',
     '/504' => 'controllers/504.controller.php',
     '/logout' => 'controllers/logout.php',
-    '/uploadPost' => 'controllers/upload.controller.php'
+    '/uploadPost' => 'controllers/upload.controller.php',
+    '/deletePost' => 'controllers/delete.controller.php'
 ];
 
     $route = $routes[$url];
