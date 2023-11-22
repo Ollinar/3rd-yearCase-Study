@@ -70,7 +70,7 @@ if (isset($_FILES['postFiles']['name'][0])) {
         }
     }
 }
-$postID = $dao->queryDB('CALL createpost(?,?,?,?,?)', [$postTitle, $postDesc, isadmin() ? 2 : 1, $_SESSION['userID'], $_SESSION['userRole']])->fetch();
+$postID = $dao->queryDB('CALL createpost(?,?,?,?,?)', [$postTitle, $postDesc, 1, $_SESSION['userID'], $_SESSION['userRole']])->fetch();
 
 
 //saving files

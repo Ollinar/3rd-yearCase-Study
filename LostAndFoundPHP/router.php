@@ -12,12 +12,12 @@ $routes =[
     '/504' => 'controllers/504.controller.php',
     '/logout' => 'controllers/logout.php',
     '/uploadPost' => 'controllers/upload.controller.php',
-    '/deletePost' => 'controllers/delete.controller.php'
+    '/deletePost' => 'controllers/delete.controller.php',
+    '/updateStatus' => 'controllers/updateStatus.php'
 ];
 
-    $route = $routes[$url];
     
-    $route ? require $route : require $routes['/'];
+    require $routes[$url]??$routes['/'];
 
 // class Router{
     
