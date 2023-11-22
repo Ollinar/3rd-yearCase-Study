@@ -68,9 +68,7 @@ body {
 }
 
 .img{
-  max-width: 80%;
-
-  min-width: 80%;
+  cursor: pointer;
 }
 
 .target{
@@ -131,4 +129,22 @@ td.desc{
 }
 input[type="file"]:invalid{
   outline: 2px red;
+}
+.modal {
+  animation: fadeIn .5s;
+}
+.modal-content {
+  animation: zoom .6s;
+}
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.xbtn{
+  cursor: pointer;
 }
