@@ -48,7 +48,8 @@
                     <div>
                         <img width="190" height="100" class="rounded-lg" src="./assets/img/registerbg.png" alt="gf" />
                     </div>
-                    <?php if ($_SESSION['userRole'] === 'admin'): ?>
+                    <?php $postUsr=$post['username']??''?>
+                    <?php if ($_SESSION['userRole'] === 'admin' || ($postUsr=== $_SESSION['username'])): ?>
                         <div hx-post="/deletePost" hx-vals='{"id":"<?= $post['postID'] ?>","type":"<?=$_GET['type']?>"}'
                             class="p-3 mr-4 text-teal-500 bg-red-100 border rounded-full  dark:text-teal-100 dark:bg-teal-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
