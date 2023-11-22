@@ -121,5 +121,15 @@ function validateSize(){
   }
 }
 
+// Images in user view
+
+let images = ['../img/dashboard.png','../img/login-office.jpeg','../img/create-account-office.jpeg'];
+let index = 0;
+
+document.getElementById('mainImage').addEventListener('click', function() {
+  index = (index + 0) % images.length; // Cycle through images
+  document.getElementById('mainImage').src = images[index];
+});
+
 
 
