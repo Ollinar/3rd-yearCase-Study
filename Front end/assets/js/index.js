@@ -10,34 +10,32 @@ document.getElementById('closeFormButton').addEventListener('click', function(e)
 });
 // ----- end  Open Upload Form
 
-
-// ------- Open edit status  modal
-document.addEventListener('click', function (event) {
-  const target = event.target;
-  if (target.classList.contains('open-button')) {
-      const modal = target.closest('tr').querySelector('.modal');
-      modal.classList.remove('hidden');
-  } else if (target.classList.contains('close-button')) {
-      const modal = target.closest('.modal');
-      modal.classList.add('hidden');
-  }
+// ----- Open modal img
+document.getElementById('openmodal').addEventListener('click', function() {
+  document.getElementById('modalimg').classList.remove('hidden');
 });
-// ------- end Open edit status  modal
 
-// ------- Open Image Preview
-var modal = document.getElementById('modal');
-var modalImg = document.getElementById('modal-img');
+document.getElementById('close').addEventListener('click', function(e) {
+  document.getElementById('modalimg').classList.add('hidden');
+  e.preventDefault();
+});
+// ----- end  Open modal img
 
-// this function is called when a small image is clicked
-function showModal(src) {
-  modal.classList.remove('hidden');
-  modalImg.src = src;
-}
 
-// this function is called when the close button is clicked
-function closeModal() {
-  modal.classList.add('hidden');
-}
+
+// ----- Open modal mark claimed
+document.getElementById('markC').addEventListener('click', function() {
+  document.getElementById('mark-claimed').classList.remove('hidden');
+});
+
+document.getElementById('closeVer').addEventListener('click', function(e) {
+  document.getElementById('mark-claimed').classList.add('hidden');
+  e.preventDefault();
+});
+// ----- end  modal
+
+
+
 
 //---- Counter of fields in Upload
 const inputFields = document.querySelectorAll('input[data-te-input-showcounter="true"]');
@@ -123,13 +121,23 @@ function validateSize(){
 
 // Images in user view
 
-let images = ['../img/dashboard.png','../img/login-office.jpeg','../img/create-account-office.jpeg'];
-let index = 0;
 
-document.getElementById('mainImage').addEventListener('click', function() {
-  index = (index + 0) % images.length; // Cycle through images
-  document.getElementById('mainImage').src = images[index];
-});
+// Get the image and insert it inside the modal
+let img = document.getElementById("triggerImage");
+let modalImg = document.getElementById("../img/registerbg.png");
+img.onclick = function(){
+  modal.classList.remove('hidden');
+  modalImg.src = this.src;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.classList.add('hidden');
+}
+
 
 
 
