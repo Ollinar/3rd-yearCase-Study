@@ -22,7 +22,7 @@ if ($_POST['from'] === 'found' && !isset($_POST['claimant'])) {
     hxRedirect('/', 302);
     die();
 }
-if ($_POST['claimant'] === '') {
+if ($_POST['from'] === 'found' &&$_POST['claimant'] === '') {
     hxRedirect('/', 302);
     die();
 }

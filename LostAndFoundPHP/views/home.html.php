@@ -2,7 +2,7 @@
 <main class="h-full overflow-y-auto">
     <div class="container px-4 grid mb-6 place-items-center">
         <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-            Welcome!! Lost
+            Welcome!!
         </h2>
         <!-- CTA -->
         <div class="grid gap-6 h-auto md:grid-cols-2 xl:grid-cols-3  hover:cursor-pointer" id="tabCard"
