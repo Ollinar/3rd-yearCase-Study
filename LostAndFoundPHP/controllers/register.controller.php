@@ -26,6 +26,11 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         require('views/fragments/register_fields.php');
         die();
     }
+    if (preg_match("/^[A-Z a-z]{3}[0-9]{4}-[0-9]{5}$/", $studIDNum) !==1) {
+        $error = "Invalid ID";
+        require('views/fragments/register_fields.php');
+        die();
+    }
     $entry = $dao->queryDB('CALL getUserByUsername(?)', [$username])->fetchAll();
     if (!empty($entry)) {
         $error = "Username already taken";
