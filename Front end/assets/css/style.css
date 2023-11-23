@@ -168,3 +168,8 @@ input[type="file"]:invalid{
 .descCont{
   width: 100%;
 }
+@media screen and (max-width: 320px) {
+  .container {
+    max-width: 100%;
+   }
+ }
