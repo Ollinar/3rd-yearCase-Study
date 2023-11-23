@@ -14,7 +14,8 @@ $routes =[
     '/uploadPost' => 'controllers/upload.controller.php',
     '/deletePost' => 'controllers/delete.controller.php',
     '/updateStatus' => 'controllers/updateStatus.php',
-    '/users' => 'controllers/users.controller.php'
+    '/users' => 'controllers/users.controller.php',
+    '/mypost' => 'controllers/mypost.controller.php'
 ];
 
     

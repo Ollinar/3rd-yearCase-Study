@@ -85,7 +85,7 @@ document.querySelector('form').addEventListener('htmx:beforeRequest', (e) => {
   if (files.length > 5) {
     hiddenTxt.textContent = "Too many file selected";
     e.preventDefault();
-  }else if (size > limit) {
+  } else if (size > limit) {
     hiddenTxt.textContent = `File too big :${(size / 1024).toFixed(2)} MB`;
     e.preventDefault();
   } else {
@@ -141,6 +141,23 @@ function reAddTextConuter() {
     });
   });
 
+}
+
+
+function showUpdatePopUp(postIDToChange) {
+  console.log('test')
+  document.getElementById('mark-claimed').classList.remove('hidden');
+  document.getElementById('postToClaim').value=postIDToChange;
+}
+function closeUpdatePopUp() {
+  document.getElementById('mark-claimed').classList.add('hidden');
+}
+
+function reAddUpdateBtnListener() {
+  // ----- Open modal mark claimed
+  document.getElementById('markC').addEventListener('click', function () {
+    document.getElementById('mark-claimed').classList.remove('hidden');
+  });
 }
 
 
