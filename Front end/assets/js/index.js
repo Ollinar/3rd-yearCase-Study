@@ -11,14 +11,14 @@ document.getElementById('closeFormButton').addEventListener('click', function(e)
 // ----- end  Open Upload Form
 
 // ----- Open modal img
-document.getElementById('openmodal').addEventListener('click', function() {
-  document.getElementById('modalimg').classList.remove('hidden');
-});
+  document.getElementById('openmodal').addEventListener('click', function() {
+    document.getElementById('modalimg').classList.remove('hidden');
+  });
 
-document.getElementById('close').addEventListener('click', function(e) {
-  document.getElementById('modalimg').classList.add('hidden');
-  e.preventDefault();
-});
+  document.getElementById('close').addEventListener('click', function(e) {
+    document.getElementById('modalimg').classList.add('hidden');
+    e.preventDefault();
+  });
 // ----- end  Open modal img
 
 
