@@ -148,3 +148,11 @@ input[type="file"]:invalid{
 .xbtn{
   cursor: pointer;
 }
+
+#modalimgCont {
+  overflow-y: scroll;
+  background-color: black;
+}
+#modalimgCont::-webkit-scrollbar {
+  display: none;
+}
