@@ -66,7 +66,7 @@
 
                     </div>
                     <div style="width: 100%;" class="  h-auto md:grid-cols-2 xl:grid-cols-2 hover:cursor-pointer shadow-2xl">
-                        <div class="w-full shadow-xl bg-white h-auto grid col-span-2 py-3">
+                        <div class="w-full shadow-xl bg-white h-auto grid col-span-2 py-3 bg-gray-100  dark:bg-gray-800">
                             <?php if (isset($post['postPic'])): ?>
                                 <?php foreach ($post['postPic'] as $pic): ?>
                                     <img class="mx-auto mb-2 border" width="650" height="600" src="<?= $pic ?>" alt="">
