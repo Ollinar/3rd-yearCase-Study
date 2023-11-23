@@ -156,3 +156,20 @@ input[type="file"]:invalid{
 #modalimgCont::-webkit-scrollbar {
   display: none;
 }
+.newsfeed{
+  max-width: 20%;
+  
+}
+
+.textDesc{
+  word-break: break-all;
+  word-wrap: break-word;
+}
+.descCont{
+  width: 100%;
+}
+@media screen and (max-width: 320px) {
+  .container {
+    max-width: 100%;
+   }
+ }
