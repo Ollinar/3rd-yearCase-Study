@@ -87,13 +87,11 @@
         </div>
     </div>
 
+    <div id="cardCont">
 
-    <div class="container px-6 mx-auto mb-6 grid ">
-        <div class="grid gap-2 h-auto md:grid-cols-2 xl:grid-cols-3  hover:cursor-pointer" id="cardCont">
-
-            <?php require('views/fragments/feedCard.php') ?>
-        </div>
+        <?php require('views/fragments/feedCard.php') ?>
     </div>
+
 
 
     <div id="mark-claimed" class="hidden z-50 fixed inset-0 shadow-2xl  flex items-center justify-center">
@@ -102,7 +100,8 @@
             <form hx-post="/updateStatus" hx-vals='{"from":"found"}'>
                 <input type="hidden" name="id" id="postToClaim">
                 <h2 class=" text-center font-bold text-2xl text-gray-800 p-4">Enter Username</h2>
-                <input class="w-full text-gray-800  title bg-gray-100 border border-green-900 p-2 outline-none rounded-md"
+                <input
+                    class="w-full text-gray-800  title bg-gray-100 border border-green-900 p-2 outline-none rounded-md"
                     required placeholder="username required to mark as claimed" type="text" name="claimant">
                 <div class="buttons flex ml-auto py-2">
                     <button id="closeVer" onclick="closeUpdatePopUp()"
@@ -117,7 +116,7 @@
 
 
     <!-- The Modal -->
-    <div id="modalimg" class="hidden fixed inset-0 shadow-2xl  flex items-center justify-center">
+    <!-- <div id="modalimg" class="hidden fixed inset-0 shadow-2xl  flex items-center justify-center">
 
         <div
             class="editor bg-white text-gray-800 mx-auto w-full flex flex-col text-white border-2 shadow-lg max-w-2xl  rounded-lg shadow-xl dark:bg-slate-800">
@@ -130,17 +129,17 @@
             </div>
         </div>
 
-    </div>
+    </div> -->
     <!-- Card -->
 
-    <div class="flex items-center justify-between h-auto border-b w-full p-4 bg-white rounded-b-lg dark:bg-gray-800 ">
+    <!-- <div class="flex items-center justify-between h-auto border-b w-full p-4 bg-white rounded-b-lg dark:bg-gray-800 ">
         <div id="openmodal" class="cursor-pointer">
             <img width="250" height="150" class="img rounded-lg sm:hidden ml-6" src="./assets/img/registerbg.png"
                 alt="gf" />
 
         </div>
 
-    </div>
+    </div> -->
 
 
 

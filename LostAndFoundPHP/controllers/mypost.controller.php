@@ -13,5 +13,15 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     getUserEmailByID(col_userID) AS 'userEmail'
     from tbl_lostpost WHERE col_userID=?", [$_SESSION['userID']])->fetchAll();
 
+    foreach ($postList as $index => $rows) {
+        $picUri = $dao->queryDB('CALL getpic(?,?)', [$rows['postID'], 1])->fetchAll();
+
+        $picList = array();
+        foreach ($picUri as $pic) {
+            array_push($picList, osPathToURLPath($pic['picURI']));
+        }
+        $postList[$index]['postPic'] = $picList;
+    }
+
     require_once('views/mypost.html.php');
 }
