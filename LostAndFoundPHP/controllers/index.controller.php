@@ -6,6 +6,14 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         die();
     }
 
+
+    $lostCount = $dao->queryDB("SELECT COUNT(*) AS `count` FROM tbl_lostpost")->fetch();
+    $lostCount=$lostCount? $lostCount['count']:0;
+    $foundCount = $dao->queryDB("SELECT COUNT(*) AS `count` FROM tbl_foundpost WHERE col_statusID=1")->fetch();
+    $foundCount=$foundCount? $foundCount['count']:0;
+    $claimedCount = $dao->queryDB("SELECT COUNT(*) AS `count` FROM tbl_history")->fetch();
+    $claimedCount=$claimedCount? $claimedCount['count']:0;
+    
     if (isset($_GET['type'])) {
         $type = $_GET['type'];
         $postList;
@@ -44,6 +52,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         if (isset($_SERVER['HTTP_HX_REQUEST'])){
             require('views/fragments/feedCard.php');
             require('views/fragments/searchbar.php');
+            require('views/fragments/tabCard.php');
             die();
         }
         

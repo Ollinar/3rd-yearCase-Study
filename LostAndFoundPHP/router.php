@@ -13,7 +13,8 @@ $routes =[
     '/logout' => 'controllers/logout.php',
     '/uploadPost' => 'controllers/upload.controller.php',
     '/deletePost' => 'controllers/delete.controller.php',
-    '/updateStatus' => 'controllers/updateStatus.php'
+    '/updateStatus' => 'controllers/updateStatus.php',
+    '/users' => 'controllers/users.controller.php'
 ];
 
     
