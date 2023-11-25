@@ -31,5 +31,12 @@ if($_POST['type'] === 'lost'){
     }
     //dlete found post
     $dao->queryDB('CALL deletePost(?,?)',[$_POST['id'],2]);
+}else if($_POST['type'] === 'claimed'){
+    if ($_SESSION['userRole'] !== 'admin') {
+        hxRedirect('/', 302);
+        die();
+    }
+    //dlete found post
+    $dao->queryDB('CALL deletePost(?,?)',[$_POST['id'],2]);
 }
 hxRedirect('/', 200);

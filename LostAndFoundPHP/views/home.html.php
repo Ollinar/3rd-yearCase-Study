@@ -8,7 +8,7 @@
         <div class="grid gap-6 h-auto md:grid-cols-2 xl:grid-cols-3  hover:cursor-pointer" id="tabCard"
             hx-swap-oob="true">
 
-            <a href="/?type=found" hx-get="/?type=lost" hx-param="*" hx-target="#cardCont" hx-push-url="true"
+            <a href="/?type=uncalimed" hx-get="/?type=lost" hx-param="*" hx-target="#cardCont" hx-push-url="true"
                 hx-on::after-request="reAddUpdateBtnListener()">
                 <div class="flex items-center h-32 border  p-4 <?php if (isset($_GET['type'])) {
                     $type = $_GET['type'];
@@ -34,11 +34,11 @@
                 </div>
             </a>
             <!-- Card -->
-            <a href="/?type=found" hx-get="/?type=found" hx-param="*" hx-target="#cardCont" hx-push-url="true"
+            <a href="/?type=uncalimed" hx-get="/?type=uncalimed" hx-param="*" hx-target="#cardCont" hx-push-url="true"
                 hx-on::after-request="reAddUpdateBtnListener()">
                 <div class="flex items-center h-32 border p-4 <?php if (isset($_GET['type'])) {
                     $type = $_GET['type'];
-                    echo $type === 'found' ? 'bg-blue-100' : 'bg-white';
+                    echo $type === 'uncalimed' ? 'bg-blue-100' : 'bg-white';
                 } ?> rounded-lg shadow-xl dark:bg-gray-800">
                     <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -50,15 +50,15 @@
                     </div>
                     <div>
                         <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                            Found
+                            Unclaimed
                         </p>
                         <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                            <?= $foundCount ?>
+                            <?= $uncalimedCount ?>
                         </p>
                     </div>
                 </div>
             </a>
-            <a href="/?type=found" hx-get="/?type=claimed" hx-param="*" hx-target="#cardCont" hx-push-url="true"
+            <a href="/?type=uncalimed" hx-get="/?type=claimed" hx-param="*" hx-target="#cardCont" hx-push-url="true"
                 hx-on::after-request="reAddUpdateBtnListener()">
                 <div class="flex items-center h-32 border p-4 <?php if (isset($_GET['type'])) {
                     $type = $_GET['type'];
@@ -97,7 +97,7 @@
     <div id="mark-claimed" class="hidden z-50 fixed inset-0 shadow-2xl  flex items-center justify-center">
         <div
             class="editor bg-white text-gray-800 mx-auto w-full flex flex-col text-white p-4 border-2 shadow-lg max-w-2xl  p-1 rounded-lg shadow-xl dark:bg-slate-800">
-            <form hx-post="/updateStatus" hx-vals='{"from":"found"}'>
+            <form hx-post="/updateStatus" hx-vals='{"from":"uncalimed"}'>
                 <input type="hidden" name="id" id="postToClaim">
                 <h2 class=" text-center font-bold text-2xl text-gray-800 p-4">Enter Username</h2>
                 <input

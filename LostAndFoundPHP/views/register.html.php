@@ -19,8 +19,15 @@
         font-family: karla;
       }
     </style> 
+
+  <script src="/assets/js/captcha.js"></script>
+
+
     <!-- htmx -->
   <script src="https://unpkg.com/htmx.org@1.9.8" integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr" crossorigin="anonymous"></script>
+    <!-- recaptcha -->
+  <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
+
 
   </head>
 
@@ -35,9 +42,10 @@
             hx-post="/register" hx-target="#regField">
             <div id="regField">
               <?php include_once('views/fragments/register_fields.php')?>
-
             </div>
-            <button name="login_user" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
+              <div class="g-recaptcha" data-sitekey="<?=$config['recaptcha']['site-key']?>"></div>
+              
+              <button  name="login_user" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
               <img src="/assets/img/svg-loaders/bars.svg" id="indic" class="htmx-indicator absolute my-auto" width="20px">Register
             </button>
           </form>

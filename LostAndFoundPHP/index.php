@@ -4,6 +4,7 @@ require_once('DAO.php');
 require_once("config.php");
 require_once("debugUtil.php");
 require_once('util.php');
+require_once('recaptcha/src/autoload.php');
 
 $dbconfig = $config['database'];
 

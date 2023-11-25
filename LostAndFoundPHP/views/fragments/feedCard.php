@@ -1,4 +1,4 @@
-<?php if (isset($postList)): ?>
+<?php if (isset($postList) && !empty($postList)): ?>
 
     <!-- News Feed -->
     <div class="container px-6 mb-6 grid grid-rows-2 grid-cols-2 ">
@@ -15,10 +15,10 @@
                                     <h1 class="font-bold dark:text-white">
                                         <?= 'Item: '. $post['itemName'] ?? '' ?>
                                     </h1>
-                                    <?Php if ($_SESSION['userRole'] === 'admin' && $_GET['type'] === 'found'): ?>
+                                    <?Php if ($_SESSION['userRole'] === 'admin' && $_GET['type'] === 'uncalimed'): ?>
 
                                         <button class="rounded-full text-white text-sm p-2 flex items-center "
-                                            onclick="showUpdatePopUp(<?= $post['postID'] ?>)"
+                                            onclick="showUpdatePopUp(<?= $post['itemID'] ?>)"
                                             style="background-color: rgb(75, 145, 114);"><img width="20" height="20"
                                                 src="assets/img/svg-loaders/ball-triangle.svg" alt=""> Mark as
                                             Claimed</button>
@@ -26,7 +26,7 @@
 
                                         <button class="rounded-full text-white text-sm p-2 flex items-center "
                                             hx-post="/updateStatus"
-                                            hx-vals='{"id":"<?= $post['postID'] ?>","from":"claimed"}'
+                                            hx-vals='{"id":"<?= $post['itemID'] ?>","from":"claimed"}'
                                             style="background-color: rgb(75, 145, 114);"><img width="20" height="20"
                                                 src="assets/img/svg-loaders/ball-triangle.svg" alt=""> Mark as Unclaimed</button>
 
@@ -53,7 +53,7 @@
                         <?php $postUsr = $post['username'] ?? '' ?>
                         <?php $type = $_GET['type'] ?? 'lost' ?>
                         <?php if ($_SESSION['userRole'] === 'admin' || ($postUsr === $_SESSION['username'])): ?>
-                            <div hx-post="/deletePost" hx-vals='{"id":"<?= $post['postID'] ?>", "type":"<?=$type?>"}'
+                            <div hx-post="/deletePost" hx-vals='{"id":"<?= $post['itemID'] ?>", "type":"<?=$type?>"}'
                                 class="p-3 mr-4 text-teal-500 bg-red-100 border rounded-full  dark:text-teal-100 dark:bg-teal-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" class="w-6 h-6 text-black">
@@ -66,7 +66,7 @@
 
                     </div>
                     <div style="width: 100%;" class="  h-auto md:grid-cols-2 xl:grid-cols-2 hover:cursor-pointer shadow-2xl">
-                        <div class="w-full shadow-xl bg-white h-auto grid col-span-2 py-3">
+                        <div class="w-full shadow-xl bg-white h-auto grid col-span-2 py-3 dark:bg-gray-800">
                             <?php if (isset($post['postPic'])): ?>
                                 <?php foreach ($post['postPic'] as $pic): ?>
                                     <img class="mx-auto mb-2 border" width="650" height="600" src="<?= $pic ?>" alt="">

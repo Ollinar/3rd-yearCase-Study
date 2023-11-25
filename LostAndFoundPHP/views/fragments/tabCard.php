@@ -1,6 +1,6 @@
 <div class="grid gap-6 h-auto md:grid-cols-2 xl:grid-cols-3  hover:cursor-pointer" id="tabCard" hx-swap-oob="innerHTML">
 
-<a href="/?type=found" hx-get="/?type=lost" hx-param="*" hx-target="#cardCont" hx-push-url="true">
+<a href="/?type=uncalimed" hx-get="/?type=lost" hx-param="*" hx-target="#cardCont" hx-push-url="true">
     <div class="flex items-center h-32 border  p-4 <?php if (isset($_GET['type'])) {
         $type = $_GET['type'];
         echo $type === 'lost' ? 'bg-blue-100' : 'bg-white';
@@ -25,10 +25,10 @@
     </div>
 </a>
 <!-- Card -->
-<a href="/?type=found" hx-get="/?type=found" hx-param="*" hx-target="#cardCont" hx-push-url="true">
+<a href="/?type=uncalimed" hx-get="/?type=uncalimed" hx-param="*" hx-target="#cardCont" hx-push-url="true">
     <div class="flex items-center h-32 border p-4 <?php if (isset($_GET['type'])) {
         $type = $_GET['type'];
-        echo $type === 'found' ? 'bg-blue-100' : 'bg-white';
+        echo $type === 'uncalimed' ? 'bg-blue-100' : 'bg-white';
     } ?> rounded-lg shadow-xl dark:bg-gray-800">
         <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -40,15 +40,15 @@
         </div>
         <div>
             <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
-                Found
+                Unclaimed
             </p>
             <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
-                <?=$foundCount?>
+                <?=$uncalimedCount?>
             </p>
         </div>
     </div>
 </a>
-<a href="/?type=found" hx-get="/?type=claimed" hx-param="*" hx-target="#cardCont" hx-push-url="true">
+<a href="/?type=uncalimed" hx-get="/?type=claimed" hx-param="*" hx-target="#cardCont" hx-push-url="true">
     <div class="flex items-center h-32 border p-4 <?php if (isset($_GET['type'])) {
         $type = $_GET['type'];
         echo $type === 'claimed' ? 'bg-blue-100' : 'bg-white';

@@ -8,10 +8,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         redirect('/', 302);
         die();
     }
-    $postList = $dao->queryDB("SELECT col_postID as 'postID',col_itemName as 'itemName', col_itemDescription 'itemDescription',
-    col_date as 'date',getUsernameByID(col_userID) AS 'username', 
-    getUserEmailByID(col_userID) AS 'userEmail'
-    from tbl_lostpost WHERE col_userID=?", [$_SESSION['userID']])->fetchAll();
+    $postList = $dao->queryDB("CALL getItemsFilteredByUserID(?)", [$_SESSION['userID']])->fetchAll();
 
     foreach ($postList as $index => $rows) {
         $picUri = $dao->queryDB('CALL getpic(?,?)', [$rows['postID'], 1])->fetchAll();
