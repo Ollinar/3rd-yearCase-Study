@@ -146,18 +146,38 @@ function reAddTextConuter() {
 
 function showUpdatePopUp(postIDToChange) {
   console.log('test')
-  document.getElementById('mark-claimed').classList.remove('hidden');
+  document.getElementById('updateForm').classList.remove('hidden');
   document.getElementById('postToClaim').value=postIDToChange;
 }
 function closeUpdatePopUp() {
-  document.getElementById('mark-claimed').classList.add('hidden');
+  document.getElementById('updateForm').classList.add('hidden');
 }
 
 function reAddUpdateBtnListener() {
   // ----- Open modal mark claimed
   document.getElementById('markC').addEventListener('click', function () {
-    document.getElementById('mark-claimed').classList.remove('hidden');
+    document.getElementById('updateForm').classList.remove('hidden');
   });
 }
 
+
+//add COnfirm Dialog to delete
+
+reqPath = ['/deletePost']
+document.addEventListener('htmx:confirm',e=>{
+  if (reqPath.includes(e.detail.path)) {
+    
+    e.preventDefault();
+    Swal.fire({
+      title:"Are You Sure?",
+      text:`This will ${e.detail.question}`,
+      showCancelButton: true,
+      confirmButtonText: "Proceed",
+    }).then(res =>{
+      if (res.isConfirmed) {
+        e.detail.issueRequest(true);
+      }
+    })
+  }
+});
 

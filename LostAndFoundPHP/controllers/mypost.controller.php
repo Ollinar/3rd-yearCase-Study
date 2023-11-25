@@ -11,7 +11,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
     $postList = $dao->queryDB("CALL getItemsFilteredByUserID(?)", [$_SESSION['userID']])->fetchAll();
 
     foreach ($postList as $index => $rows) {
-        $picUri = $dao->queryDB('CALL getpic(?,?)', [$rows['postID'], 1])->fetchAll();
+        $picUri = $dao->queryDB('CALL getItemPic(?)', [$rows['itemID']])->fetchAll();
 
         $picList = array();
         foreach ($picUri as $pic) {

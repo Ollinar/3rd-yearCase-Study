@@ -37,8 +37,7 @@ function getUserIpAddr(){
 function resetCaptcha(){
     ?>
     <script>
-        grecaptcha.reset(
-        )
+        grecaptcha.reset();
     </script>
     <?php
 }

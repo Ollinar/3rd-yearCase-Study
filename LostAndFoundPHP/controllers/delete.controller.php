@@ -15,28 +15,29 @@ if (!isset($_POST['type'])||!isset($_POST['id'])) {
 
 
 if($_POST['type'] === 'lost'){
-    $res = $dao->queryDB("SELECT col_userID FROM tbl_lostpost WHERE col_postID=?",[$_POST['id']])->fetch();
-    if($_SESSION['userRole'] !=='admin'&&(!$res && $res['col_userID'] !== $_SESSION['userID'])){
+    $res = $dao->queryDB("SELECT getPosterID(?) AS 'posterID'",[$_POST['id']])->fetch();
+    if($_SESSION['userRole'] !=='admin'&&(!$res && $res['posterID'] !== $_SESSION['userID'])){
         hxRedirect('/', 302);
         die();
     }
     //delelte lost post
-    $dao->queryDB('CALL deletePost(?,?)',[$_POST['id'],1]);
+    $dao->queryDB('CALL deleteItem(?)',[$_POST['id']]);
     echo 'lost post deleted';
 
-}else if($_POST['type'] === 'found'){
+}else if($_POST['type'] === 'unclaimed'){
     if ($_SESSION['userRole'] !== 'admin') {
         hxRedirect('/', 302);
         die();
     }
     //dlete found post
-    $dao->queryDB('CALL deletePost(?,?)',[$_POST['id'],2]);
+    $dao->queryDB('CALL deleteItem(?)',[$_POST['id']]);
 }else if($_POST['type'] === 'claimed'){
     if ($_SESSION['userRole'] !== 'admin') {
         hxRedirect('/', 302);
         die();
     }
     //dlete found post
-    $dao->queryDB('CALL deletePost(?,?)',[$_POST['id'],2]);
+    $dao->queryDB('CALL deleteItem(?)',[$_POST['id']]);
 }
-hxRedirect('/', 200);
+$type=$_POST['type'];
+hxRedirect("/?type=$type", 200);

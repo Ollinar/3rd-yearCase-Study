@@ -70,7 +70,7 @@ if (isset($_FILES['postFiles']['name'][0])) {
         }
     }
 }
-$postID = $dao->queryDB('CALL createpost(?,?,?,?,?)', [$postTitle, $postDesc, 1, $_SESSION['userID'], $_SESSION['userRole']])->fetch();
+$itemID = $dao->queryDB('CALL createNewItem(?,?,?,?)', [$postTitle, $postDesc, $_SESSION['userID'], $_SESSION['userRole']])->fetch();
 
 
 //saving files
@@ -82,11 +82,11 @@ if (isset($_FILES['postFiles']['name'][0])) {
     for ($i = 0; $i < $fileCount; $i++) {
         //if this is not set, it means that the server didn't accept it (maybe because its too big)
         $ext = pathinfo($filesUp['name'][$i], PATHINFO_EXTENSION);
-        $newName = uniqid($postID['postID'] . '-' . $i . '-') . '.' . $ext;
+        $newName = uniqid($itemID['postID'] . '-' . $i . '-') . '.' . $ext;
         $newPath = join(DIRECTORY_SEPARATOR, [$fileUpDir, $newName]);
         move_uploaded_file($filesUp['tmp_name'][$i], $newPath);
-        $dao->queryDB('Call insertpic(?,?,?)', [$postID['postID'], $newPath, $_SESSION['userRole']]);
+        $dao->queryDB('Call insertNewPic(?,?)', [$itemID['postID'], $newPath]);
     }
 }
-hxRedirect('/', 302)
-    ?>
+$successMes = "Upload Success!";
+require_once('views/fragments/upload_fields.php');

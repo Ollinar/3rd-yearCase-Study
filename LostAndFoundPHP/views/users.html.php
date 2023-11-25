@@ -10,9 +10,9 @@
                                 <thead>
                                     <tr
                                     class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                                    <th class="px-4 py-3">UserID</th>
                                     <th class="px-4 py-3">Username</th>
                                     <th class="px-4 py-3">Email</th>
+                                    <th class="px-4 py-3">Role</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -35,16 +35,16 @@
                                                 <div>
 
                                                     <p class="text-xs text-gray-600 dark:text-gray-400">
-                                                        <?=$usr['studID']?>
+                                                        <?=$usr['username']?>
                                                     </p>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="px-4 py-3 text-sm">
-                                            <p class="font-semibold"><?=$usr['username']?></p>
+                                            <p class="font-semibold"><?=$usr['email']?></p>
                                         </td>
                                         <td class="px-4 py-3 text-xs">
-                                            <p class="font-semibold"><?=$usr['email']?></p>
+                                            <p class="font-semibold"><?=$usr['role']?></p>
                                         </td>
                                     </tr>
                                     <?php endforeach?>

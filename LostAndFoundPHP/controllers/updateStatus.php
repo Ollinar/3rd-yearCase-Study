@@ -18,16 +18,16 @@ if (!isset($_POST['id']) || !isset($_POST['from'])) {
     die();
 }
 
-if ($_POST['from'] === 'found' && !isset($_POST['claimant'])) {
+if ($_POST['from'] === 'unclaimed' && !isset($_POST['claimant'])) {
     hxRedirect('/', 302);
     die();
 }
-if ($_POST['from'] === 'found' &&$_POST['claimant'] === '') {
+if ($_POST['from'] === 'unclaimed' &&$_POST['claimant'] === '') {
     hxRedirect('/', 302);
     die();
 }
 
-if ($_POST['from'] === 'found') {
+if ($_POST['from'] === 'unclaimed') {
     $usrToClaim = $dao->queryDB("CALL getUserByUsername(?)", [$_POST['claimant']])->fetchAll();
     if (empty($usrToClaim)) {
         hxRedirect('/', 302);

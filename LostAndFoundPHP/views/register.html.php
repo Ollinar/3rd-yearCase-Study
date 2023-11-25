@@ -20,7 +20,6 @@
       }
     </style> 
 
-  <script src="/assets/js/captcha.js"></script>
 
 
     <!-- htmx -->
