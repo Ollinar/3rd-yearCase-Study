@@ -9,7 +9,7 @@
 
     </div>
 
-    <div id="cardCont">
+    <div id="cardCont" >
 
         <?php require('views/fragments/feedCard.php') ?>
     </div>

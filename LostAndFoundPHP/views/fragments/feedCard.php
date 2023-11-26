@@ -66,7 +66,7 @@
                         <?php $type = $_GET['type'] ?? 'lost' ?>
                         <?php if ($_SESSION['userRole'] === 'admin' || ($postUsr === $_SESSION['username'])): ?>
                             <div hx-post="/deletePost" hx-vals='{"id":"<?= $post['itemID'] ?>", "type":"<?= $type ?>"}'
-                                hx-confirm="Delete the post permanently."
+                                hx-confirm="Delete the post permanently." hx-target="#cardCont"
                                 class="p-3 mr-4 text-teal-500 bg-red-100 border rounded-full  dark:text-teal-100 dark:bg-teal-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                     stroke="currentColor" class="w-6 h-6 text-black">

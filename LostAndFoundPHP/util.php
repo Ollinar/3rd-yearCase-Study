@@ -6,6 +6,9 @@ function redirect($url, $status = 0) {
 function hxRedirect($url, $status = 0) {
     header("HX-Redirect: ". $url, true, $status);
 }
+function hxLocation($url, $target,$status = 0) {
+    header("HX-Location: {\"path\":\"$url\", \"target\":\"$target\"}", true, $status);
+}
 
 function sanitizeData($data){
     return htmlspecialchars($data);

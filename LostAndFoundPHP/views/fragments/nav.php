@@ -215,7 +215,7 @@
                             <button id="openForm"
                                 class="relative align-middle flex px-2 py-1 rounded-md focus:outline-none focus:shadow-outline-purple border hover:text-purple-600"
                                 aria-label="Notifications">
-
+                                
                                 <svg class="w-6 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
@@ -224,27 +224,8 @@
                             </button>
                         </li>
 
-                        <!--Hidden Upload Form-->
-                        <div id="popUpload" class="hidden fixed inset-0 shadow-2xl  flex items-center justify-center">
-                            <form id="uploadForm" class="w-full" action="/uploadPost" enctype="multipart/form-data"
-                                method="post" hx-post="/uploadPost" hx-encoding="multipart/form-data"
-                                hx-target="#uploadFields" hx-on::after-request="reAddTextConuter()">
-                                <div
-                                    class="editor bg-white text-gray-800 mx-auto w-full flex flex-col text-white p-4 border-2 shadow-lg max-w-2xl  p-1 rounded-lg shadow-xl dark:bg-slate-800">
-                                    <h2 class=" text-center font-bold text-2xl text-gray-800 p-4">Upload Item</h2>
-                                    <div class="" id="uploadFields">
+                        <div id="popUpload" class="hidden fixed inset-0 shadow-2xl  flex items-center justify-center" >
                                         <?php include('views/fragments/upload_fields.php') ?>
-
-                                    </div>
-
-                                    <div class="buttons flex ml-auto py-2">
-                                        <button id="closeFormButton" type="button"
-                                            class="text-gray-800 btn border-2 border-green-300 rounded-full p-1 px-4 font-semibold text-white ml-auto bg-white  p-1 ">Cancel</button>
-                                        <button id="btnPost" type="submit"
-                                            class="btn border border-white  p-1 px-4 font-semibold text-white rounded-full ml-2 bg-purple-600 p-1 hover:bg-purple-600 hover:text-white ">Post</button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
 
                         <!--Hidden Upload Form-->

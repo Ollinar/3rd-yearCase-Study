@@ -54,4 +54,5 @@ if ($_POST['from'] === 'unclaimed') {
 }else if ($_POST['from'] === 'lost') {
     $dao->queryDB('CALL updateItemToFound(?)', [$_POST['id']]);
 }
-hxRedirect('/', 200);
+$type=$_POST['from'];
+hxRedirect("/?type=$type", 200);

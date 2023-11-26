@@ -14,12 +14,14 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) !== 'POST') {
 if ($_POST['postTitle'] === '') {
     $error = 'Please enter a title';
     require_once('views/fragments/upload_fields.php');
+    http_response_code(400);
     die();
 }
 $postTitle = $_POST['postTitle'];
 if (strlen($postTitle) > 50) {
     $error = 'Title is too long, please keep it under 50';
     require_once('views/fragments/upload_fields.php');
+    http_response_code(400);
     die();
 }
 $postDesc = $_POST['postDesc'] ?? null;
@@ -29,7 +31,9 @@ $postDesc = $_POST['postDesc'] ?? null;
 if (isset($_FILES['postFiles']['name'][0])) {
     $fileCount = count($_FILES['postFiles']['name']);
     if ($fileCount > 5) {
-        redirect('/', 302);
+        $error = 'Files exceed 5';
+        require_once('views/fragments/upload_fields.php');
+        http_response_code(413);
         die();
     }
     $filesUp = $_FILES['postFiles'];
@@ -41,17 +45,20 @@ if (isset($_FILES['postFiles']['name'][0])) {
         if ($filesUp['tmp_name'][$i] === '') {
             $error = 'Image Files might be too big';
             require_once('views/fragments/upload_fields.php');
+            http_response_code(413);
             die();
         }
 
         if ($filesUp['error'][$i] !== UPLOAD_ERR_OK) {
             $error = 'Error uploading file';
             require_once('views/fragments/upload_fields.php');
+            http_response_code(400);
             die();
         }
         if (!is_uploaded_file($filesUp['tmp_name'][$i])) {
             $error = 'Error while processing files';
             require_once('views/fragments/upload_fields.php');
+            http_response_code(400);
             die();
         }
 
@@ -60,12 +67,14 @@ if (isset($_FILES['postFiles']['name'][0])) {
         if (!in_array($ext, $imgExt)) {
             $error = 'Unsupported file extension';
             require_once('views/fragments/upload_fields.php');
+            http_response_code(415);
             die();
         }
 
         if (!in_array(mime_content_type($filesUp['tmp_name'][$i]), $imgMimes)) {
             $error = 'Unsupported file type';
             require_once('views/fragments/upload_fields.php');
+            http_response_code(415);
             die();
         }
     }
@@ -88,5 +97,8 @@ if (isset($_FILES['postFiles']['name'][0])) {
         $dao->queryDB('Call insertNewPic(?,?)', [$itemID['postID'], $newPath]);
     }
 }
-$successMes = "Upload Success!";
+
+
 require_once('views/fragments/upload_fields.php');
+
+?>

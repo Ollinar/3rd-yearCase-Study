@@ -124,6 +124,10 @@ function reAddTextConuter() {
   const inputFields = document.querySelectorAll('input[data-te-input-showcounter="true"]');
   const textarea = document.querySelectorAll('textarea[data-te-input-showcounter="true"]');
 
+  document.getElementById('closeFormButton').addEventListener('click', function (e) {
+    document.getElementById('popUpload').classList.add('hidden');
+    e.preventDefault();
+  });
 
   inputFields.forEach(inputField => {
     const charCount = inputField.nextElementSibling.querySelector('div');
@@ -140,6 +144,7 @@ function reAddTextConuter() {
       charCount.textContent = `${textarea.value.length} / ${textarea.maxLength}`;
     });
   });
+  console.log();
 
 }
 
@@ -179,5 +184,32 @@ document.addEventListener('htmx:confirm',e=>{
       }
     })
   }
+});
+
+
+htmx.on("htmx:beforeSwap",e=>{
+  const req = e.detail.xhr;
+  if (e.detail.xhr.status >=400 && e.detail.xhr.status < 500 ) {
+    Swal.fire({
+      title:"Error",
+      text:req.statusText,
+      icon:"error"
+    });
+    e.detail.shouldSwap = true;
+  }
+});
+htmx.on("htmx:afterRequest",e=>{
+  if(e.detail.elt.id === 'uploadForm' && e.detail.successful){
+
+    const urlParam = new URLSearchParams(window.location.search);
+    Swal.fire({
+      title:"Upload Success!",
+      icon:"success"
+    }).then(res=>{
+      htmx.ajax('GET',window.location.href,'#cardCont');
+      document.getElementById('popUpload').classList.add('hidden');
+    });
+  }
+  
 });
 
