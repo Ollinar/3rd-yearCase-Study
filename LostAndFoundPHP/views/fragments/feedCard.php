@@ -13,9 +13,22 @@
                             <div width="100%" class="">
                                 <div class="flex justify-between">
                                     <h1 class="font-bold dark:text-white">
-                                        <?= 'Item: '. $post['itemName'] ?? '' ?>
+                                        <?= 'Item: ' . $post['itemName'] ?? '' ?>
                                     </h1>
-                                    <?Php if ($_SESSION['userRole'] === 'admin' && $_GET['type'] === 'unclaimed'): ?>
+
+                                    <?Php if ($_SESSION['userRole'] === 'admin' && $_GET['type'] === 'lost'): ?>
+                                        <button class="rounded-full text-white text-sm p-2 flex items-center "
+                                            hx-post="/updateStatus" hx-vals='{"id":"<?= $post['itemID'] ?>","from":"lost"}'
+                                            style="background-color: rgb(75, 145, 114);"><img width="20" height="20"
+                                                src="assets/img/svg-loaders/ball-triangle.svg" alt=""> Mark as Found</button>
+
+                                    <?Php elseif ($_SESSION['userRole'] === 'admin' && $_GET['type'] === 'found'): ?>
+                                        <button class="rounded-full text-white text-sm p-2 flex items-center "
+                                            onclick="showUpdatePopUp(<?= $post['itemID'] ?>)"
+                                            style="background-color: rgb(75, 145, 114);"><img width="20" height="20"
+                                                src="assets/img/svg-loaders/ball-triangle.svg" alt=""> Mark as
+                                            Claimed</button>
+                                    <?Php elseif ($_SESSION['userRole'] === 'admin' && $_GET['type'] === 'unclaimed'): ?>
 
                                         <button class="rounded-full text-white text-sm p-2 flex items-center "
                                             onclick="showUpdatePopUp(<?= $post['itemID'] ?>)"
@@ -25,8 +38,7 @@
                                     <?php elseif ($_SESSION['userRole'] === 'admin' && $_GET['type'] === 'claimed'): ?>
 
                                         <button class="rounded-full text-white text-sm p-2 flex items-center "
-                                            hx-post="/updateStatus"
-                                            hx-vals='{"id":"<?= $post['itemID'] ?>","from":"claimed"}'
+                                            hx-post="/updateStatus" hx-vals='{"id":"<?= $post['itemID'] ?>","from":"claimed"}'
                                             style="background-color: rgb(75, 145, 114);"><img width="20" height="20"
                                                 src="assets/img/svg-loaders/ball-triangle.svg" alt=""> Mark as Unclaimed</button>
 
@@ -34,7 +46,7 @@
                                 </div>
                                 <div class="flex justify-between ">
                                     <p class="textDesc text-sm font-medium text-gray-600 dark:text-gray-400 ">
-                                        <?= empty($post['itemDescription'])? 'No Description':$post['itemDescription'] ?>
+                                        <?= empty($post['itemDescription']) ? 'No Description' : $post['itemDescription'] ?>
                                     </p>
                                     <p class="dark:text-white">
                                         <?= $post['date'] ?? '' ?>
@@ -53,7 +65,7 @@
                         <?php $postUsr = $post['username'] ?? '' ?>
                         <?php $type = $_GET['type'] ?? 'lost' ?>
                         <?php if ($_SESSION['userRole'] === 'admin' || ($postUsr === $_SESSION['username'])): ?>
-                            <div hx-post="/deletePost" hx-vals='{"id":"<?= $post['itemID'] ?>", "type":"<?=$type?>"}'
+                            <div hx-post="/deletePost" hx-vals='{"id":"<?= $post['itemID'] ?>", "type":"<?= $type ?>"}'
                                 hx-confirm="Delete the post permanently."
                                 class="p-3 mr-4 text-teal-500 bg-red-100 border rounded-full  dark:text-teal-100 dark:bg-teal-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

@@ -26,6 +26,14 @@ if ($_POST['from'] === 'unclaimed' &&$_POST['claimant'] === '') {
     hxRedirect('/', 302);
     die();
 }
+if ($_POST['from'] === 'found' && !isset($_POST['claimant'])) {
+    hxRedirect('/', 302);
+    die();
+}
+if ($_POST['from'] === 'found' &&$_POST['claimant'] === '') {
+    hxRedirect('/', 302);
+    die();
+}
 
 if ($_POST['from'] === 'unclaimed') {
     $usrToClaim = $dao->queryDB("CALL getUserByUsername(?)", [$_POST['claimant']])->fetchAll();
@@ -33,8 +41,17 @@ if ($_POST['from'] === 'unclaimed') {
         hxRedirect('/', 302);
         die();
     }
-    $dao->queryDB('CALL make_Claimed(?,?)', [$_POST['id'], $_POST['claimant']]);
-} else if ($_POST['from'] === 'claimed') {
-    $dao->queryDB('CALL make_Unclaimed(?)', [$_POST['id']]);
+    $dao->queryDB('CALL updateItemToClaimed(?,?)', [$_POST['id'], $_POST['claimant']]);
+}else if ($_POST['from'] === 'found') {
+    $usrToClaim = $dao->queryDB("CALL getUserByUsername(?)", [$_POST['claimant']])->fetchAll();
+    if (empty($usrToClaim)) {
+        hxRedirect('/', 302);
+        die();
+    }
+    $dao->queryDB('CALL updateItemToClaimed(?,?)', [$_POST['id'], $_POST['claimant']]);
+}else if ($_POST['from'] === 'claimed') {
+    $dao->queryDB('CALL updateItemFromClaimed(?)', [$_POST['id']]);
+}else if ($_POST['from'] === 'lost') {
+    $dao->queryDB('CALL updateItemToFound(?)', [$_POST['id']]);
 }
 hxRedirect('/', 200);
