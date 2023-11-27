@@ -5,11 +5,11 @@
             Welcome!!
         </h2>
         <!-- CTA -->
-        <?php require('views/fragments/tabCard.php')?>
+        <?php require('views/fragments/tabCard.php') ?>
 
     </div>
 
-    <div id="cardCont" >
+    <div id="cardCont">
 
         <?php require('views/fragments/feedCard.php') ?>
     </div>
@@ -22,7 +22,15 @@
 
 
 
-    
+
+
+    <div id="commentFormModal" class="hidden z-50 fixed inset-0 shadow-2xl  flex items-center justify-center">
+
+    <?php require_once('views/fragments/commentForm.php'); ?>
+
+    </div>
+
+
 
 
 
@@ -43,8 +51,5 @@
         </div>
     </div>
     <!--Hidden modal-->
-
-
-
 </main>
 <?php require_once('views/fragments/footer.php'); ?>

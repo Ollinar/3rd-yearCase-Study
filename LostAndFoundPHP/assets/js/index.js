@@ -144,7 +144,6 @@ function reAddTextConuter() {
       charCount.textContent = `${textarea.value.length} / ${textarea.maxLength}`;
     });
   });
-  console.log();
 
 }
 
@@ -165,13 +164,24 @@ function reAddUpdateBtnListener() {
   });
 }
 
+//comment functions
+function showCommentForm(itmID) {
+  document.getElementById('commentFormModal').classList.remove('hidden');
+  document.getElementById('itemToComment').value=itmID;
+}
+function closeCommentForm() {
+  document.getElementById('commentFormModal').classList.add('hidden');
+  document.getElementById('itemToComment').value=0;
+}
+
+
+
 
 //add COnfirm Dialog to delete
 
 reqPath = ['/deletePost']
 document.addEventListener('htmx:confirm',e=>{
   if (reqPath.includes(e.detail.path)) {
-    
     e.preventDefault();
     Swal.fire({
       title:"Are You Sure?",
@@ -198,16 +208,21 @@ htmx.on("htmx:beforeSwap",e=>{
     e.detail.shouldSwap = true;
   }
 });
-htmx.on("htmx:afterRequest",e=>{
-  if(e.detail.elt.id === 'uploadForm' && e.detail.successful){
 
-    const urlParam = new URLSearchParams(window.location.search);
+const elemIdWithAlert = new Map([
+  ["popUpload",["Upload Success!","popUpload"]],
+  ["commentFormModal", ["Comment Posted!","commentFormModal"]]
+]);
+htmx.on("htmx:afterRequest",e=>{
+  if(elemIdWithAlert.has(e.detail.elt.id) && e.detail.successful){
+
+    const inf = elemIdWithAlert.get(e.detail.elt.id);
     Swal.fire({
-      title:"Upload Success!",
+      title:inf[0],
       icon:"success"
     }).then(res=>{
       htmx.ajax('GET',window.location.href,'#cardCont');
-      document.getElementById('popUpload').classList.add('hidden');
+      document.getElementById(inf[1]).classList.add('hidden');
     });
   }
   

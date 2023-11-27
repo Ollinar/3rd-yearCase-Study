@@ -51,12 +51,14 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         }
         foreach ($postList as $index => $rows) {
             $picUri = $dao->queryDB('CALL getItemPic(?)', [$rows['itemID']])->fetchAll();
+            $cmnts = $dao->queryDB('CALL getComments(?)', [$rows['itemID']])->fetchAll();
 
             $picList = array();
             foreach ($picUri as $pic) {
                 array_push($picList, osPathToURLPath($pic['picURI']));
             }
             $postList[$index]['postPic'] = $picList;
+            $postList[$index]['comments'] =  $cmnts;
         }
         if (isset($_SERVER['HTTP_HX_REQUEST'])){
             require('views/fragments/feedCard.php');
