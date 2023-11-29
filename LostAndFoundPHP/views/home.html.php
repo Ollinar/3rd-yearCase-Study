@@ -29,6 +29,11 @@
     <?php require_once('views/fragments/commentForm.php'); ?>
 
     </div>
+    <div id="replyFormModal" class="hidden z-50 fixed inset-0 shadow-2xl  flex items-center justify-center">
+
+    <?php require_once('views/fragments/replyForm.php'); ?>
+
+    </div>
 
 
 

@@ -58,6 +58,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
                 array_push($picList, osPathToURLPath($pic['picURI']));
             }
             $postList[$index]['postPic'] = $picList;
+            foreach($cmnts as $cmtInd => $cmt){
+                $rpls = $dao->queryDB('CALL getReplies(?)',[$cmt['commentID']])->fetchAll();
+                $cmnts[$cmtInd]['replies'] = $rpls;
+            }
             $postList[$index]['comments'] =  $cmnts;
         }
         if (isset($_SERVER['HTTP_HX_REQUEST'])){

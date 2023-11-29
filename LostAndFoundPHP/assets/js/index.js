@@ -174,6 +174,17 @@ function closeCommentForm() {
   document.getElementById('itemToComment').value=0;
 }
 
+//reply functions
+function showReplyForm(itmID) {
+  document.getElementById('replyFormModal').classList.remove('hidden');
+  document.getElementById('commentToReply').value=itmID;
+}
+
+function closeReplyForm() {
+  document.getElementById('replyFormModal').classList.add('hidden');
+  document.getElementById('commentToReply').value=0;
+}
+
 
 
 
@@ -211,7 +222,8 @@ htmx.on("htmx:beforeSwap",e=>{
 
 const elemIdWithAlert = new Map([
   ["popUpload",["Upload Success!","popUpload"]],
-  ["commentFormModal", ["Comment Posted!","commentFormModal"]]
+  ["commentFormModal", ["Comment Posted!","commentFormModal"]],
+  ["replyFormModal", ["Reply Posted!","replyFormModal"]],
 ]);
 htmx.on("htmx:afterRequest",e=>{
   if(elemIdWithAlert.has(e.detail.elt.id) && e.detail.successful){
