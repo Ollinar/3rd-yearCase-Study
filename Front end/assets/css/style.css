@@ -173,3 +173,9 @@ input[type="file"]:invalid{
     max-width: 100%;
    }
  }
+
+ .commentCont{
+  word-wrap: break-word;
+  word-break: normal;
+  border: 1px solid red;
+ }

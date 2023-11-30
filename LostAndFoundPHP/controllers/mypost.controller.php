@@ -12,13 +12,20 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
 
     foreach ($postList as $index => $rows) {
         $picUri = $dao->queryDB('CALL getItemPic(?)', [$rows['itemID']])->fetchAll();
+        $cmnts = $dao->queryDB('CALL getComments(?)', [$rows['itemID']])->fetchAll();
 
         $picList = array();
         foreach ($picUri as $pic) {
             array_push($picList, osPathToURLPath($pic['picURI']));
         }
         $postList[$index]['postPic'] = $picList;
+        foreach($cmnts as $cmtInd => $cmt){
+            $rpls = $dao->queryDB('CALL getReplies(?)',[$cmt['commentID']])->fetchAll();
+            $cmnts[$cmtInd]['replies'] = $rpls;
+        }
+        $postList[$index]['comments'] =  $cmnts;
     }
+
 
     require_once('views/mypost.html.php');
 }

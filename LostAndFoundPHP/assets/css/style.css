@@ -94,7 +94,9 @@ aside{
    width: 90%;
   }
 }
-
+.container{
+  margin-bottom: 10px;
+}
 input{
   border: 1px solid green;
 }
@@ -176,4 +178,13 @@ input[type="file"]:invalid{
   .container {
     max-width: 100%;
    }
+ }
+
+ 
+ .commentCont{
+  word-wrap: break-word;
+  word-break: break-all;
+ }
+ .replyCont{
+  padding-left: 40px;
  }

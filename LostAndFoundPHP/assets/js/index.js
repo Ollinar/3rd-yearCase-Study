@@ -190,7 +190,7 @@ function closeReplyForm() {
 
 //add COnfirm Dialog to delete
 
-reqPath = ['/deletePost']
+reqPath = ['/deletePost','/deleteComment','/deleteReply']
 document.addEventListener('htmx:confirm',e=>{
   if (reqPath.includes(e.detail.path)) {
     e.preventDefault();
@@ -237,6 +237,5 @@ htmx.on("htmx:afterRequest",e=>{
       document.getElementById(inf[1]).classList.add('hidden');
     });
   }
-  
 });
 
