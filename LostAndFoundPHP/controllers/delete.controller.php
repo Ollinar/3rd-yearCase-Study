@@ -32,5 +32,11 @@ if($_POST['type'] === 'lost' || $_POST['type'] === 'found'){
     
     $dao->queryDB('CALL deleteItem(?)',[$_POST['id']]);
 }
+
+if(isset(parse_url($_SERVER['HTTP_HX_CURRENT_URL'])['path']) && parse_url($_SERVER['HTTP_HX_CURRENT_URL'])['path'] ==='/mypost' ){
+    
+    hxLocation("/mypost", '#cardCont',200);
+    die();
+}
 $type=$_POST['type'];
 hxLocation("/?type=$type", '#cardCont',200);

@@ -44,6 +44,11 @@
 
                                     <?php endif ?>
                                 </div>
+                                <?php if (isset($post['dateClaimed'])):?>
+                                    <p class="dark:text-white">
+                                        Date Claimed: <?= $post['dateClaimed'] ?? '' ?>
+                                    </p>
+                                    <?php endif?>
                                 <div class="flex justify-between ">
                                     <p class="textDesc text-sm font-medium text-gray-600 dark:text-gray-400 ">
                                        
@@ -52,7 +57,9 @@
                                     </p>
                                     <p class="dark:text-white">
                                         <?= $post['date'] ?? '' ?>
+                                        
                                     </p>
+
                                 </div>
                             </div>
                             <p class="textDesc text-sm font-semibold text-gray-700 dark:text-gray-200">
@@ -66,7 +73,7 @@
 
                         <?php $postUsr = $post['username'] ?? '' ?>
                         <?php $type = $_GET['type'] ?? 'lost' ?>
-                        <?php if ($_SESSION['userRole'] === 'admin' || ($postUsr === $_SESSION['username'])): ?>
+                        <?php if (($_SESSION['userRole'] === 'admin' || $postUsr === $_SESSION['username']) && $type !=='claimed'): ?>
                             <div hx-post="/deletePost" hx-vals='{"id":"<?= $post['itemID'] ?>", "type":"<?= $type ?>"}'
                                 hx-confirm="Delete the post permanently." hx-target="#cardCont"
                                 class="p-3 mr-4 text-teal-500 bg-red-100 border rounded-full  dark:text-teal-100 dark:bg-teal-500">

@@ -26,6 +26,9 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) === "GET") {
         $postList[$index]['comments'] =  $cmnts;
     }
 
-
+    if(isset($_SERVER['HTTP_HX_REQUEST'])){
+        require_once('views/fragments/feedCard.php');
+        die();
+    }
     require_once('views/mypost.html.php');
 }
